@@ -22,7 +22,7 @@ public partial class IngredienteCEN
 public void DecrementarStock (string p_oid, int p_cantidad)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Ingrediente_decrementarStock) ENABLED START*/
-
+        //prueba
         IngredienteEN ing = _IIngredienteCAD.ReadOIDDefault (p_oid);
 
         if (!(ing.Stock >= p_cantidad))
