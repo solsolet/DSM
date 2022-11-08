@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="IngredienteEN" table="Ingrediente"> 
+						<id name="Nombre" column="nombreIngrediente"/> 
+			
+					
+					<property name="Tipo" > 
+						<column name="tipo"  not-null="true"/>
+					</property>
+					<property name="Stock" type="integer"> 
+						<column name="stock"  not-null="true"/>
+					</property>
+					<property name="Alergeno" type="string"> 
+						<column name="alergeno"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Producto" table="[ingrediente_producto]"  >
+							<key>
+								
+									<column name="FK_nombreIngrediente_idIngrediente"/> 
+							</key>
+      						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN">
+									<column name="FK_nombre_idProducto"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+			
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="IngredienteENReadAllHQL">from IngredienteEN</query>
+		</hibernate-mapping>
+	

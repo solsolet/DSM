@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="OfertasEN" table="Ofertas"> 
+				  	
+						<id name="Id" column="idOfertas" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Descuento" type="float"> 
+						<column name="descuento"  not-null="true"/>
+					</property>
+					<property name="Precio" type="float"> 
+						<column name="precio"  not-null="true"/>
+					</property>
+					<property name="Puntos" type="integer"> 
+						<column name="puntos"  not-null="true"/>
+					</property>
+					<property name="Vigencia" type="boolean"> 
+						<column name="vigencia"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Carta" table="[carta_ofertas]" inverse="true" >
+							<key>
+								
+									<column name="FK_idOfertas_idOfertas"/> 
+							</key>
+      						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN">
+									<column name="FK_idCarta_idCarta"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+			
+			
+			
+		  			
+						<bag name="Notificacion" >
+							<key>
+							
+								
+								<column name="FK_idOfertas_idOfertas"/>
+					      	</key>
+							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="OfertasENReadAllHQL">from OfertasEN</query>
+		</hibernate-mapping>
+	

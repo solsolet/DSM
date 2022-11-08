@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="NotificacionEN" table="Notificacion"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+			
+			
+			
+		  			
+						<bag name="Pedido" table="[notificacion_pedido]"  >
+							<key>
+								
+									<column name="FK_id_idNotificacion"/> 
+							</key>
+      						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN">
+									<column name="FK_idPedido_idPedido"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<many-to-one name="Ofertas" class="DSMPracticaGenNHibernate.EN.DSMPractica.OfertasEN" >	
+								<column name="FK_idOfertas_idOfertas"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="NotificacionENReadAllHQL">from NotificacionEN</query>
+		</hibernate-mapping>
+	

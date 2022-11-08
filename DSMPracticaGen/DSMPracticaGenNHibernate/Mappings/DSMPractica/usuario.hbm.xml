@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="UsuarioEN" table="Usuario"> 
+						<id name="Email" column="email"/> 
+			
+					
+					<property name="Direccion" type="string"> 
+						<column name="direccion"  not-null="true"/>
+					</property>
+					<property name="Tarjeta" type="long"> 
+						<column name="tarjeta"  not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="apellidos"  not-null="true"/>
+					</property>
+					<property name="Telefono" type="integer"> 
+						<column name="telefono"  not-null="true"/>
+					</property>
+					<property name="Puntos" type="integer"> 
+						<column name="puntos"  not-null="true"/>
+					</property>
+					<property name="Pass" type="string"> 
+						<column name="pass"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<bag name="Pedido" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario_NR"/>
+					      	</key>
+							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Valoracion" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario_NR"/>
+					      	</key>
+							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN"/>
+					    </bag>
+					
+			
+			
+			
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		</hibernate-mapping>
+	

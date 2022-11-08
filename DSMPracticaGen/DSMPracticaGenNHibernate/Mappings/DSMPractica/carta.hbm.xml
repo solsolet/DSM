@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="CartaEN" table="Carta"> 
+				  	
+						<id name="Id" column="idCarta" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Tipo" > 
+						<column name="tipo"  not-null="true"/>
+					</property>
+					<property name="Linkterminos" type="string"> 
+						<column name="linkterminos"  not-null="true"/>
+					</property>
+					<property name="Linkcarta" type="string"> 
+						<column name="linkcarta"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<bag name="Producto" table="[carta_carta_0]"  >
+							<key>
+								
+									<column name="FK_idCarta_idCarta"/> 
+							</key>
+      						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN">
+									<column name="FK_nombre_idCarta_0"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+		  			
+						<bag name="Ofertas" table="[carta_ofertas]"  >
+							<key>
+								
+									<column name="FK_idCarta_idCarta"/> 
+							</key>
+      						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.OfertasEN">
+									<column name="FK_idOfertas_idOfertas"/> 
+      						</many-to-many>
+    					</bag>
+			
+			
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="CartaENReadAllHQL">from CartaEN</query>
+		</hibernate-mapping>
+	

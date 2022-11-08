@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="FacturaEN" table="Factura"> 
+				  	
+						<id name="Id" column="idFactura" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Fecha" type="date"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+					<property name="EsPagada" type="boolean"> 
+						<column name="esPagada"  not-null="true"/>
+					</property>
+					<property name="EsAnulada" type="boolean"> 
+						<column name="esAnulada"  not-null="true"/>
+					</property>
+					<property name="Total" type="float"> 
+						<column name="total"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+					
+							<many-to-one name="Pedido" class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN" >
+								<column name="FK_idPedido_idPedido"/> 
+        					</many-to-one>
+					 
+						
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="FacturaENReadAllHQL">from FacturaEN</query>
+		</hibernate-mapping>
+	

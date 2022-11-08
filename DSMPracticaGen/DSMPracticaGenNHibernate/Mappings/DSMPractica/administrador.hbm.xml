@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="AdministradorEN" table="Administrador"> 
+						<id name="Nombre" column="nombre"/> 
+			
+					
+					<property name="Pass" type="string"> 
+						<column name="pass"  not-null="true"/>
+					</property>
+			
+			
+			
+					
+					
+		
+		 </class>	
+		  
+		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
+		</hibernate-mapping>
+	

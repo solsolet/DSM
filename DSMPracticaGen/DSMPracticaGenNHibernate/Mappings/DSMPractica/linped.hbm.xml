@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="LinPedEN" table="LinPed"> 
+				  	
+						<id name="Linea" column="lineaLinPed" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Cantidad" type="integer"> 
+						<column name="cantidad"  not-null="true"/>
+					</property>
+					<property name="Importe" type="float"> 
+						<column name="importe"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="Producto" class="DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN" >	
+								<column name="FK_nombre_idProducto"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Pedido" class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN" >	
+								<column name="FK_idPedido_idPedido"/> 
+						</many-to-one>
+											 					
+			
+			
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="LinPedENReadAllHQL">from LinPedEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="DSMPracticaGenNHibernate"
+		                   namespace="DSMPracticaGenNHibernate.EN.DSMPractica">
+		    
+		    
+			
+				<class name="Usuario_NREN" table="Usuario_NR"> 
+						<id name="Email" column="email"/> 
+			
+					
+					<property name="Direccion" type="string"> 
+						<column name="direccion"  not-null="true"/>
+					</property>
+					<property name="Tarjeta" type="integer"> 
+						<column name="tarjeta"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<bag name="Pedido" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario_NR"/>
+					      	</key>
+							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Valoracion" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario_NR"/>
+					      	</key>
+							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="Usuario_NRENReadAllHQL">from Usuario_NREN</query>
+		</hibernate-mapping>
+	
