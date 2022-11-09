@@ -41,7 +41,7 @@ public string EnviarPedido (int p_oid, Nullable<DateTime> p_fecha)
             foreach(LinPedEN l in pedido.Linped) {
                 ProductoEN producto = l.Producto;
                 productoCEN = new ProductoCEN(productoCAD);
-                productoCEN.ModificarIngredientes(producto.Nombre); //implementarlo
+                //productoCEN.ModificarIngredientes(producto.Nombre); //implementarlo
             }
             pedido.Fecha = p_fecha;
             pedido.Estado = Enumerated.DSMPractica.EstadoPedidoEnum.enviado;
@@ -57,6 +57,7 @@ public string EnviarPedido (int p_oid, Nullable<DateTime> p_fecha)
         }
         finally
         {
+             System.Console.WriteLine("La custom transaction EnviarPedido ha ido "+resultado);
              SessionClose ();
         }
         return resultado;

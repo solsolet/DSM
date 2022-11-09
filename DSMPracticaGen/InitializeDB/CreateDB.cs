@@ -132,8 +132,55 @@ public static void InitializeData ()
                 // p.e. CustomerCEN customer = new CustomerCEN();
                 // customer.New_ (p_user:"user", p_password:"1234");
 
+                /*
+                
+                //IList<>
+                IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll (0, 2);
+                IList<String> listaIng = new List<String>();
+                foreach (IngredienteEN ing in todosIngredientes) {
+                        listaIng.Add (ing.Nombre);
+                } 
+                */
+
+                //pedidoporProducto
+
+                IList<PedidoCEN> listaPedidos = pedCEN.pedidoporProducto(nomProducto1);
+
+                Console.WriteLine("Lista de Pedidos que tienen el producto  " + nomProducto1);
+                foreach (PedidoCEN ped in listaPedidos)
+                {
+                    Console.WriteLine("Pedido " + ped.Id);
+                }
+
+                //filtrarCarta
+
+                IList<CartaCEN> listaCartas = carCEN.filtrarCarta(tCarta);
+                Console.WriteLine("Lista de Cartas que son del tipo " + tCarta);
+                foreach (CartaCEN cart in listaCartas)
+                {
+                    Console.WriteLine("Carta  " + cart.get_ICartaCAD());
+                }
+
+                //filtrarCategoria
+
+                IList<ProductoCEN> listaProd = prodCEN.filtrarCategoria(tCategoria);
+                Console.WriteLine("Lista de Productos que son del tipo " + tCategoria);
+                foreach (ProductoCEN prod in listaProd)
+                {
+                    Console.WriteLine("Producto  " + prod.Id);
+                }
+
+                //filtrarComida
+
+                IList<IngredienteCEN> listaIng = ingCEN.filtrarComida(tComida);
+                Console.WriteLine("Lista de Ingredientes que son del tipo " + tComida);
+                foreach (IngredienteCEN ing in listaIng)
+                {
+                    Console.WriteLine("Ingrediente  " + ing.Nombre);
+                }
+
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
