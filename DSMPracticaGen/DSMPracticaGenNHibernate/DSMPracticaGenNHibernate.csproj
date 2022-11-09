@@ -126,7 +126,7 @@
 			
 			<Compile Include="CEN\DSMPractica\PedidoCEN_EstadoPedido.cs" />
 			
-			<Compile Include="CEN\DSMPractica\PedidoCEN_EnviarPedido.cs" />
+			<Compile Include="CP\DSMPractica\PedidoCP_EnviarPedido.cs" />
 			
 			<Compile Include="CEN\DSMPractica\PedidoCEN_EntregarPedido.cs" />
 			

@@ -34,8 +34,9 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_mbHvQFBZEe2rTsSzAJPhmg" name="estadoPedido" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_mbHvQVBZEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_X5bswE6_Ee28R53S7L1TBg"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_ydsJQFBZEe2rTsSzAJPhmg" name="enviarPedido" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_ydsJQFBZEe2rTsSzAJPhmg" name="enviarPedido" operationType="CustomTransaction">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_ydsJQVBZEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_X5bswE6_Ee28R53S7L1TBg"/>
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_8ycjoGAdEe20Ye3y_ZjLKw" name="p_fecha" type="Date"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_1G3K8FBZEe2rTsSzAJPhmg" name="entregarPedido" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_1G3yAFBZEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_X5bswE6_Ee28R53S7L1TBg"/>

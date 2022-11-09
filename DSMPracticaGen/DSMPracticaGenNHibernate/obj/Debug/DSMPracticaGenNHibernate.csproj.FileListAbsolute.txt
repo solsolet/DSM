@@ -17,3 +17,7 @@ C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\DSMPracticaGen\DSMP
 C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.csproj.CopyComplete
 C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.dll
 C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.pdb
+C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\pract\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.csproj.AssemblyReference.cache
+C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\pract\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.csproj.CoreCompileInputs.cache
+C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\pract\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.dll
+C:\Users\Gemma\Documents\Uni\3r\DSM\Practiques\OIDE_DSM22_23\pract\DSMPracticaGen\DSMPracticaGenNHibernate\obj\Debug\DSMPracticaGenNHibernate.pdb

@@ -21,7 +21,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=error; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -85,55 +85,55 @@ public static void InitializeData ()
                 carCEN.New_ (DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, "cartavegana.com", "carta.com");
 
                 //crear antes de producto ingrediente
-                IngredienteCEN ingCEN = new IngredienteCEN();
-                string ing1 = ingCEN.New_("patata",DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 23, null);
-                string ing2 = ingCEN.New_("nugget", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.general, 52, "huevo");
-                string ing3 = ingCEN.New_("tomate", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 17, null);
+                IngredienteCEN ingCEN = new IngredienteCEN ();
+                string ing1 = ingCEN.New_ ("patata", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 23, null);
+                string ing2 = ingCEN.New_ ("nugget", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.general, 52, "huevo");
+                string ing3 = ingCEN.New_ ("tomate", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 17, null);
 
                 //IList<>
-                IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll(0, 2);
+                IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll (0, 2);
                 IList<String> listaIng = new List<String>();
                 foreach (IngredienteEN ing in todosIngredientes) {
-                    listaIng.Add(ing.Nombre);
+                        listaIng.Add (ing.Nombre);
                 }
 
                 ProductoCEN prodCEN = new ProductoCEN (); //da error ns como solucionarlo
                 prodCEN.New_ ("Pedro", "hamburguesa", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum.hamburguesa, 10, 3, listaIng, "hambur.jpg", true); //no tiene sentido la lista de ingredientes con la hamburguesa pero xdd
 
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idUsu = usuCEN.New_("pedro08@gmail.com", "c/Quintana n32", 1234567890123456789, "Pedro", "Llorca", 963453454, 75, "123123a");
-                
-                NotificacionCEN notCEN = new NotificacionCEN();
-                                
-                int idNoti1 = notCEN.New_();
-                int idNoti2 = notCEN.New_();
-                int idNoti3 = notCEN.New_();
+                string idUsu = usuCEN.New_ ("pedro08@gmail.com", "c/Quintana n32", 1234567890123456789, "Pedro", "Llorca", 963453454, 75, "123123a");
 
-                IList<NotificacionEN> todasNotficaciones = notCEN.ReadAll(0, 2);
+                NotificacionCEN notCEN = new NotificacionCEN ();
+
+                int idNoti1 = notCEN.New_ ();
+                int idNoti2 = notCEN.New_ ();
+                int idNoti3 = notCEN.New_ ();
+
+                IList<NotificacionEN> todasNotficaciones = notCEN.ReadAll (0, 2);
                 IList<int> listaNot = new List<int>();
                 foreach (NotificacionEN noti in todasNotficaciones) {
-                    listaNot.Add(noti.Id);
+                        listaNot.Add (noti.Id);
                 }
 
-                PedidoCEN pedCEN = new PedidoCEN();
-                int idPed = pedCEN.New_("c/Quintana n32", new DateTime(2022,4,5), "pedro08@gmail.com", 22, "pedro08@gmail.com",DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum.enviado, new DateTime(20022,4,5), listaNot);
+                PedidoCEN pedCEN = new PedidoCEN ();
+                int idPed = pedCEN.New_ ("c/Quintana n32", new DateTime (2022, 4, 5), "pedro08@gmail.com", 22, "pedro08@gmail.com", DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum.enviado, new DateTime (20022, 4, 5), listaNot);
 
-                ValoracionCEN valCEN = new ValoracionCEN();
-                valCEN.New_(3, "Muy rapidos y atentos", idUsu, idPed);
+                ValoracionCEN valCEN = new ValoracionCEN ();
+                valCEN.New_ (3, "Muy rapidos y atentos", idUsu, idPed);
 
-                AdministradorCEN adminCEN = new AdministradorCEN();
-                adminCEN.New_("Pedro Ruiz", "hola1234");
+                AdministradorCEN adminCEN = new AdministradorCEN ();
+                adminCEN.New_ ("Pedro Ruiz", "hola1234");
 
-                LinPedCEN lpCEN = new LinPedCEN();
-                int lin1 = lpCEN.New_("Agua", idPed, 1, 1);
-                int lin2 = lpCEN.New_("Patatas deluxe", idPed, 2, 2);
-                int lin3 = lpCEN.New_("FMburger", idPed, 1, 5);
+                LinPedCEN lpCEN = new LinPedCEN ();
+                int lin1 = lpCEN.New_ ("Agua", idPed, 1, 1);
+                int lin2 = lpCEN.New_ ("Patatas deluxe", idPed, 2, 2);
+                int lin3 = lpCEN.New_ ("FMburger", idPed, 1, 5);
 
                 // p.e. CustomerCEN customer = new CustomerCEN();
                 // customer.New_ (p_user:"user", p_password:"1234");
 
                 /*PROTECTED REGION END*/
-            }
+        }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);
