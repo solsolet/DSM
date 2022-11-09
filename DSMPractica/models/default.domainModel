@@ -76,9 +76,7 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_lnl68FXHEe2rOuP3p8bfqA" name="p_Carta_OID" type="OID" typeObject="_lXDLoE7DEe28R53S7L1TBg"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_pnMyMk7DEe28R53S7L1TBg" name="readAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="_lXDLoE7DEe28R53S7L1TBg"/>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_a4scoFBTEe28HMx2g0uehQ" name="filtrarCarta" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_a4tDsFBTEe28HMx2g0uehQ" name="p_oid" type="OID" typeObject="_lXDLoE7DEe28R53S7L1TBg"/>
-      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_a4scoFBTEe28HMx2g0uehQ" name="filtrarCarta" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_lXDLoE7DEe28R53S7L1TBg" filter="FROM CartaEN" automaticSynchronize="false"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_EMHLoFLzEe2o546CMi7aqw" name="imprimirCarta" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_EMY4cFLzEe2o546CMi7aqw" name="p_oid" type="OID" typeObject="_lXDLoE7DEe28R53S7L1TBg"/>
       </operations>
@@ -212,9 +210,7 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_HYtKoFBaEe2rTsSzAJPhmg" name="modificarIngredientes" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_HYtKoVBaEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_w_e5kE_PEe2q_--0FvnJjA"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_c6gpwFBbEe2rTsSzAJPhmg" name="filtrarCategoria" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_c6h34FBbEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_w_e5kE_PEe2q_--0FvnJjA"/>
-      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_c6gpwFBbEe2rTsSzAJPhmg" name="filtrarCategoria" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_w_e5kE_PEe2q_--0FvnJjA" filter="FROM ProductoEN" automaticSynchronize="false"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_E46nEFLOEe2u5a5NCylqbQ" name="filtrarPrecio" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_E48cQFLOEe2u5a5NCylqbQ" name="p_oid" type="OID" typeObject="_w_e5kE_PEe2q_--0FvnJjA"/>
       </operations>
@@ -254,9 +250,7 @@
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_OU0uq1BiEe2rTsSzAJPhmg" name="p_Ingrediente_OID" type="OID" typeObject="_RTJGYFBNEe2HbfL5xXZiXw"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_V71IwlBNEe2HbfL5xXZiXw" name="readAll" operationType="ReadAll" type="Object" collectionType="List" typeObject="_RTJGYFBNEe2HbfL5xXZiXw"/>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_yMjggFBaEe2rTsSzAJPhmg" name="filtrarComida" type="Void">
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_yMjggVBaEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_RTJGYFBNEe2HbfL5xXZiXw"/>
-      </operations>
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_yMjggFBaEe2rTsSzAJPhmg" name="filtrarComida" operationType="ReadFilter" type="Object" collectionType="List" typeObject="_RTJGYFBNEe2HbfL5xXZiXw" filter="FROM IngredienteEN" automaticSynchronize="false"/>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_y--b8FBaEe2rTsSzAJPhmg" name="incrementarStock" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_y-_DAFBaEe2rTsSzAJPhmg" name="p_oid" type="OID" typeObject="_RTJGYFBNEe2HbfL5xXZiXw"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Hsp38FYZEe23SIfifIJnlw" name="p_cantidad" type="Integer"/>
