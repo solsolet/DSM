@@ -32,6 +32,10 @@ System.Collections.Generic.IList<ProductoEN> ReadAll (int first, int size);
 
 
 
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria ();
+
+
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio ();
 
 
 void AsignarCarta (string p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs);

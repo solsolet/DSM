@@ -120,6 +120,14 @@ public System.Collections.Generic.IList<ProductoEN> ReadAll (int first, int size
         list = _IProductoCAD.ReadAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria ()
+{
+        return _IProductoCAD.FiltrarCategoria ();
+}
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio ()
+{
+        return _IProductoCAD.FiltrarPrecio ();
+}
 public void AsignarCarta (string p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs)
 {
         //Call to ProductoCAD

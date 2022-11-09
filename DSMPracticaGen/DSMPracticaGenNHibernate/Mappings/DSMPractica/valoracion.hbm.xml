@@ -37,5 +37,6 @@
 		 </class>	
 		  
 		  <query name="ValoracionENReadAllHQL">from ValoracionEN</query>
+		  <query name="ValoracionENfiltrarPuntuaciónHQL"><![CDATA[select val FROM ValoracionEN as val where val.Puntuacion =: p_pValoracion]]></query>
 		</hibernate-mapping>
 	

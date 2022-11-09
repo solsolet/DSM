@@ -29,5 +29,9 @@ ValoracionEN ReadOID (int puntuacion
 
 
 System.Collections.Generic.IList<ValoracionEN> ReadAll (int first, int size);
+
+
+
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> FiltrarPuntuación ();
 }
 }

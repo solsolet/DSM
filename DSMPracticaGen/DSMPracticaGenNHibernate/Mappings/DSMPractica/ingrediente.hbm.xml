@@ -43,5 +43,6 @@
 		 </class>	
 		  
 		  <query name="IngredienteENReadAllHQL">from IngredienteEN</query>
+		  <query name="IngredienteENfiltrarComidaHQL"><![CDATA[select ing FROM IngredienteEN as ing where ing.Tipo =: p_tIng]]></query>
 		</hibernate-mapping>
 	

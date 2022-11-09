@@ -107,5 +107,9 @@ public System.Collections.Generic.IList<ValoracionEN> ReadAll (int first, int si
         list = _IValoracionCAD.ReadAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> FiltrarPuntuación ()
+{
+        return _IValoracionCAD.FiltrarPuntuación ();
+}
 }
 }

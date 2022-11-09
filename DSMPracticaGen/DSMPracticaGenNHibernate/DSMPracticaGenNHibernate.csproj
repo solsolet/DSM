@@ -132,6 +132,7 @@
 			
 			<Compile Include="CEN\DSMPractica\PedidoCEN_ConfirmarPedido.cs" />
 			
+			
 	<Compile Include="EN\DSMPractica\CartaEN.cs" />
 	<Compile Include="CEN\DSMPractica\CartaCEN.cs" />
 	<Compile Include="CAD\DSMPractica\ICartaCAD.cs" />
@@ -142,7 +143,6 @@
 			
 			
 			
-			<Compile Include="CEN\DSMPractica\CartaCEN_FiltrarCarta.cs" />
 			
 			<Compile Include="CEN\DSMPractica\CartaCEN_ImprimirCarta.cs" />
 			
@@ -178,7 +178,6 @@
 			
 			<Compile Include="CEN\DSMPractica\ValoracionCEN_Publicar.cs" />
 			
-			<Compile Include="CEN\DSMPractica\ValoracionCEN_FiltrarPuntuación.cs" />
 			
 			<Compile Include="CEN\DSMPractica\ValoracionCEN_VerRSociales.cs" />
 			
@@ -194,9 +193,7 @@
 			
 			<Compile Include="CEN\DSMPractica\ProductoCEN_ModificarIngredientes.cs" />
 			
-			<Compile Include="CEN\DSMPractica\ProductoCEN_FiltrarCategoria.cs" />
 			
-			<Compile Include="CEN\DSMPractica\ProductoCEN_FiltrarPrecio.cs" />
 			
 			
 	<Compile Include="EN\DSMPractica\IngredienteEN.cs" />
@@ -209,7 +206,6 @@
 			
 			
 			
-			<Compile Include="CEN\DSMPractica\IngredienteCEN_FiltrarComida.cs" />
 			
 			<Compile Include="CEN\DSMPractica\IngredienteCEN_IncrementarStock.cs" />
 			

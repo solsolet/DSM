@@ -95,5 +95,9 @@ public System.Collections.Generic.IList<CartaEN> ReadAll (int first, int size)
         list = _ICartaCAD.ReadAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> FiltrarCarta (int ? p_tCarta)
+{
+        return _ICartaCAD.FiltrarCarta (p_tCarta);
+}
 }
 }

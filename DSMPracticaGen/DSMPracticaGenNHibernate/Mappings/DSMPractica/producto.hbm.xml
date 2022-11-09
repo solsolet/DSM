@@ -82,5 +82,7 @@
 		 </class>	
 		  
 		  <query name="ProductoENReadAllHQL">from ProductoEN</query>
+		  <query name="ProductoENfiltrarCategoriaHQL"><![CDATA[select prod FROM ProductoEN as prod where prod.Categoria =: p_cProducto]]></query>
+		  <query name="ProductoENfiltrarPrecioHQL"><![CDATA[select prod FROM ProductoEN prod.Precio =: p_pProducto]]></query>
 		</hibernate-mapping>
 	

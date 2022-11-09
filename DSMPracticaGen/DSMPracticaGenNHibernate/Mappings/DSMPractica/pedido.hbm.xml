@@ -94,5 +94,6 @@
 		 </class>	
 		  
 		  <query name="PedidoENReadAllHQL">from PedidoEN</query>
+		  <query name="PedidoENpedidoporProductoHQL"><![CDATA[select ped FROM PedidoEN as ped inner join ped.LineaPedido as lin where lin.Producto.Nombre =: p_nomProducto]]></query>
 		</hibernate-mapping>
 	

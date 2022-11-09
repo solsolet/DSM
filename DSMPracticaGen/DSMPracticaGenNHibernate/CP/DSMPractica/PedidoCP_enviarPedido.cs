@@ -32,33 +32,33 @@ public string EnviarPedido (int p_oid, Nullable<DateTime> p_fecha)
 
         try
         {
-            SessionInitializeTransaction ();
-            PedidoCAD pedidoCAD = new PedidoCAD (session);
-            ProductoCAD productoCAD = new ProductoCAD (session);
+                SessionInitializeTransaction ();
+                PedidoCAD pedidoCAD = new PedidoCAD (session);
+                ProductoCAD productoCAD = new ProductoCAD (session);
 
-            PedidoEN pedido = pedidoCAD.ReadOIDDefault(p_oid);
+                PedidoEN pedido = pedidoCAD.ReadOIDDefault (p_oid);
 
-            foreach(LinPedEN l in pedido.Linped) {
-                ProductoEN producto = l.Producto;
-                productoCEN = new ProductoCEN(productoCAD);
-                //productoCEN.ModificarIngredientes(producto.Nombre); //implementarlo
-            }
-            pedido.Fecha = p_fecha;
-            pedido.Estado = Enumerated.DSMPractica.EstadoPedidoEnum.enviado;
-            pedidoCAD.Modify(pedido);
-            resultado = "bien";
-            SessionCommit();
+                foreach (LinPedEN l in pedido.Linped) {
+                        ProductoEN producto = l.Producto;
+                        productoCEN = new ProductoCEN (productoCAD);
+                        //productoCEN.ModificarIngredientes(producto.Nombre); //implementarlo
+                }
+                pedido.Fecha = p_fecha;
+                pedido.Estado = Enumerated.DSMPractica.EstadoPedidoEnum.enviado;
+                pedidoCAD.Modify (pedido);
+                resultado = "bien";
+                SessionCommit ();
         }
         catch (Exception ex)
         {
-            resultado = "bien";
-            SessionRollBack ();
-            throw ex;
+                resultado = "bien";
+                SessionRollBack ();
+                throw ex;
         }
         finally
         {
-             System.Console.WriteLine("La custom transaction EnviarPedido ha ido "+resultado);
-             SessionClose ();
+                System.Console.WriteLine ("La custom transaction EnviarPedido ha ido " + resultado);
+                SessionClose ();
         }
         return resultado;
 

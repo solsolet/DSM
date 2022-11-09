@@ -58,5 +58,6 @@
 		 </class>	
 		  
 		  <query name="CartaENReadAllHQL">from CartaEN</query>
+		  <query name="CartaENfiltrarCartaHQL"><![CDATA[select cart FROM CartaEN as cart where cart.Tipo =: p_tCarta]]></query>
 		</hibernate-mapping>
 	

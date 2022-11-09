@@ -261,5 +261,36 @@ public System.Collections.Generic.IList<IngredienteEN> ReadAll (int first, int s
 
         return result;
 }
+
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> FiltrarComida (int ? p_tIng)
+{
+        System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM IngredienteEN self where select ing FROM IngredienteEN as ing where ing.Tipo =: p_tIng";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("IngredienteENfiltrarComidaHQL");
+                query.SetParameter ("p_tIng", p_tIng);
+
+                result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in IngredienteCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -29,5 +29,8 @@ CartaEN ReadOID (int id
 
 
 System.Collections.Generic.IList<CartaEN> ReadAll (int first, int size);
+
+
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> FiltrarCarta (int ? p_tCarta);
 }
 }

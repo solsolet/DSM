@@ -264,5 +264,35 @@ public System.Collections.Generic.IList<ValoracionEN> ReadAll (int first, int si
 
         return result;
 }
+
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> FiltrarPuntuación ()
+{
+        System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ValoracionEN self where select val FROM ValoracionEN as val where val.Puntuacion =: p_pValoracion";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ValoracionENfiltrarPuntuaciónHQL");
+
+                result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in ValoracionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -126,5 +126,9 @@ public System.Collections.Generic.IList<PedidoEN> ReadAll (int first, int size)
         list = _IPedidoCAD.ReadAll (first, size);
         return list;
 }
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN p_nomProducto)
+{
+        return _IPedidoCAD.PedidoporProducto (p_nomProducto);
+}
 }
 }

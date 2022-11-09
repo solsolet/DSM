@@ -288,6 +288,64 @@ public System.Collections.Generic.IList<ProductoEN> ReadAll (int first, int size
         return result;
 }
 
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria ()
+{
+        System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where select prod FROM ProductoEN as prod where prod.Categoria =: p_cProducto";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENfiltrarCategoriaHQL");
+
+                result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio ()
+{
+        System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where select prod FROM ProductoEN prod.Precio =: p_pProducto";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENfiltrarPrecioHQL");
+
+                result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 public void AsignarCarta (string p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs)
 {
         DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN productoEN = null;

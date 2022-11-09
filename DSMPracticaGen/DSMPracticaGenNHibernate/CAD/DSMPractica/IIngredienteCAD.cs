@@ -29,5 +29,8 @@ IngredienteEN ReadOID (string nombre
 
 
 System.Collections.Generic.IList<IngredienteEN> ReadAll (int first, int size);
+
+
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> FiltrarComida (int ? p_tIng);
 }
 }

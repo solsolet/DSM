@@ -262,5 +262,36 @@ public System.Collections.Generic.IList<CartaEN> ReadAll (int first, int size)
 
         return result;
 }
+
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> FiltrarCarta (int ? p_tCarta)
+{
+        System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CartaEN self where select cart FROM CartaEN as cart where cart.Tipo =: p_tCarta";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CartaENfiltrarCartaHQL");
+                query.SetParameter ("p_tCarta", p_tCarta);
+
+                result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in CartaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }
