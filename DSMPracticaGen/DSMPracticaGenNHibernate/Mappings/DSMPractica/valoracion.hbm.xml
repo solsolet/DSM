@@ -23,12 +23,6 @@
 			
 			
 		  			
-						<many-to-one name="Usuario" class="DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN" >	
-								<column name="FK_attribute_idUsuario_NR"/> 
-						</many-to-one>
-											 					
-			
-		  			
 					
 							<many-to-one name="Pedido" class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN" >
 								<column name="FK_idPedido_idPedido"/> 
@@ -36,6 +30,12 @@
 					 
 						
 			
+			
+		  			
+						<many-to-one name="Usuario_0" class="DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN" >	
+								<column name="FK_idUsuario_idUsuario_0"/> 
+						</many-to-one>
+											 					
 					
 					
 					

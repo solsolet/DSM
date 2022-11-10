@@ -103,12 +103,12 @@ public void ModifyDefault (PedidoEN pedido)
                 pedidoEN.Precio = pedido.Precio;
 
 
-
                 pedidoEN.Estado = pedido.Estado;
 
 
 
                 pedidoEN.Fecha = pedido.Fecha;
+
 
 
 
@@ -137,18 +137,18 @@ public int New_ (PedidoEN pedido)
         try
         {
                 SessionInitializeTransaction ();
-                if (pedido.Usuario != null) {
-                        // Argumento OID y no colección.
-                        pedido.Usuario = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), pedido.Usuario.Id);
-
-                        pedido.Usuario.Pedido
-                        .Add (pedido);
-                }
                 if (pedido.Notificacion != null) {
                         for (int i = 0; i < pedido.Notificacion.Count; i++) {
                                 pedido.Notificacion [i] = (DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN), pedido.Notificacion [i].Id);
                                 pedido.Notificacion [i].Pedido.Add (pedido);
                         }
+                }
+                if (pedido.Usuario_0 != null) {
+                        // Argumento OID y no colección.
+                        pedido.Usuario_0 = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), pedido.Usuario_0.Id);
+
+                        pedido.Usuario_0.Pedido
+                        .Add (pedido);
                 }
 
                 session.Save (pedido);

@@ -15,6 +15,8 @@ System.Collections.Generic.IList<UsuarioEN> ReadAllDefault (int first, int size)
 
 
 
+int New_ (UsuarioEN usuario);
+
 void Modify (UsuarioEN usuario);
 
 
@@ -27,13 +29,5 @@ UsuarioEN ReadOID (int id
 
 
 System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size);
-
-
-
-
-
-
-
-int New_ (UsuarioEN usuario);
 }
 }

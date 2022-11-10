@@ -91,15 +91,10 @@ public void ModifyDefault (UsuarioEN usuario)
                 SessionInitializeTransaction ();
                 UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
 
-                usuarioEN.Email = usuario.Email;
-
-
                 usuarioEN.Direccion = usuario.Direccion;
 
 
                 usuarioEN.Tarjeta = usuario.Tarjeta;
-
-
 
 
                 usuarioEN.Nombre = usuario.Nombre;
@@ -115,6 +110,11 @@ public void ModifyDefault (UsuarioEN usuario)
 
 
                 usuarioEN.Pass = usuario.Pass;
+
+
+                usuarioEN.Email = usuario.Email;
+
+
 
                 session.Update (usuarioEN);
                 SessionCommit ();
@@ -135,15 +135,38 @@ public void ModifyDefault (UsuarioEN usuario)
 }
 
 
+public int New_ (UsuarioEN usuario)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+
+                session.Save (usuario);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return usuario.Id;
+}
+
 public void Modify (UsuarioEN usuario)
 {
         try
         {
                 SessionInitializeTransaction ();
                 UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
-
-                usuarioEN.Email = usuario.Email;
-
 
                 usuarioEN.Direccion = usuario.Direccion;
 
@@ -164,6 +187,9 @@ public void Modify (UsuarioEN usuario)
 
 
                 usuarioEN.Pass = usuario.Pass;
+
+
+                usuarioEN.Email = usuario.Email;
 
                 session.Update (usuarioEN);
                 SessionCommit ();
@@ -265,32 +291,6 @@ public System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size)
         }
 
         return result;
-}
-
-public int New_ (UsuarioEN usuario)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-
-                session.Save (usuario);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return usuario.Id;
 }
 }
 }

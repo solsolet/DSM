@@ -41,13 +41,6 @@ private float precio;
 
 
 /**
- *	Atributo usuario
- */
-private DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario;
-
-
-
-/**
  *	Atributo estado
  */
 private DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum estado;
@@ -89,6 +82,13 @@ private System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica
 
 
 
+/**
+ *	Atributo usuario_0
+ */
+private DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario_0;
+
+
+
 
 
 
@@ -118,12 +118,6 @@ public virtual string Cliente {
 
 public virtual float Precio {
         get { return precio; } set { precio = value;  }
-}
-
-
-
-public virtual DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN Usuario {
-        get { return usuario; } set { usuario = value;  }
 }
 
 
@@ -164,6 +158,12 @@ public virtual System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMP
 
 
 
+public virtual DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN Usuario_0 {
+        get { return usuario_0; } set { usuario_0 = value;  }
+}
+
+
+
 
 
 public PedidoEN()
@@ -174,20 +174,20 @@ public PedidoEN()
 
 
 
-public PedidoEN(int id, string direntrega, Nullable<DateTime> horamaxima, string cliente, float precio, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum estado, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, Nullable<DateTime> fecha, DSMPracticaGenNHibernate.EN.DSMPractica.FacturaEN factura, DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN valoracion, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN> notificacion
+public PedidoEN(int id, string direntrega, Nullable<DateTime> horamaxima, string cliente, float precio, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum estado, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, Nullable<DateTime> fecha, DSMPracticaGenNHibernate.EN.DSMPractica.FacturaEN factura, DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN valoracion, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN> notificacion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario_0
                 )
 {
-        this.init (Id, direntrega, horamaxima, cliente, precio, usuario, estado, linped, fecha, factura, valoracion, notificacion);
+        this.init (Id, direntrega, horamaxima, cliente, precio, estado, linped, fecha, factura, valoracion, notificacion, usuario_0);
 }
 
 
 public PedidoEN(PedidoEN pedido)
 {
-        this.init (Id, pedido.Direntrega, pedido.Horamaxima, pedido.Cliente, pedido.Precio, pedido.Usuario, pedido.Estado, pedido.Linped, pedido.Fecha, pedido.Factura, pedido.Valoracion, pedido.Notificacion);
+        this.init (Id, pedido.Direntrega, pedido.Horamaxima, pedido.Cliente, pedido.Precio, pedido.Estado, pedido.Linped, pedido.Fecha, pedido.Factura, pedido.Valoracion, pedido.Notificacion, pedido.Usuario_0);
 }
 
 private void init (int id
-                   , string direntrega, Nullable<DateTime> horamaxima, string cliente, float precio, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum estado, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, Nullable<DateTime> fecha, DSMPracticaGenNHibernate.EN.DSMPractica.FacturaEN factura, DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN valoracion, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN> notificacion)
+                   , string direntrega, Nullable<DateTime> horamaxima, string cliente, float precio, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum estado, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, Nullable<DateTime> fecha, DSMPracticaGenNHibernate.EN.DSMPractica.FacturaEN factura, DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN valoracion, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN> notificacion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario_0)
 {
         this.Id = id;
 
@@ -200,8 +200,6 @@ private void init (int id
 
         this.Precio = precio;
 
-        this.Usuario = usuario;
-
         this.Estado = estado;
 
         this.Linped = linped;
@@ -213,6 +211,8 @@ private void init (int id
         this.Valoracion = valoracion;
 
         this.Notificacion = notificacion;
+
+        this.Usuario_0 = usuario_0;
 }
 
 public override bool Equals (object obj)

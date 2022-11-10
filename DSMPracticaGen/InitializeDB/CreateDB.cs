@@ -79,7 +79,8 @@ public static void InitializeData ()
         {
                 // Insert the initilizations of entities using the CEN classes
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                int idUsu = usuCEN.New_ ("pedro08@gmail.com", "c/Quintana n32", 1234567890123456789, "Pedro", "Llorca", 963453454, 75, "123123a");
+                int idUsu = usuCEN.New_ ("", 1, "", "", 1, 1, "", "");
+                //int idUsu = usuCEN.New_ ("pedro08@gmail.com", "c/Quintana n32", 1234567890123456789, "Pedro", "Llorca", 963453454, 75, "123123a");
 
                 //AdministradorCEN adminCEN = new AdministradorCEN ();
                 //adminCEN.New_ ("Pedro Ruiz", "hola1234");

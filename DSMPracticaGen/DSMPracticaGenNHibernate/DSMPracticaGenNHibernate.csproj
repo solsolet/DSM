@@ -148,24 +148,6 @@
 			
 			<Compile Include="CEN\DSMPractica\CartaCEN_VerTerminos.cs" />
 			
-	<Compile Include="EN\DSMPractica\UsuarioEN.cs" />
-	<Compile Include="CEN\DSMPractica\UsuarioCEN.cs" />
-	<Compile Include="CAD\DSMPractica\IUsuarioCAD.cs" />
-	<Compile Include="CAD\DSMPractica\UsuarioCAD.cs" />
-	<Compile Include="CP\DSMPractica\UsuarioCP.cs" />
-			
-			
-			
-			
-			<Compile Include="CEN\DSMPractica\UsuarioCEN_Registrarse.cs" />
-			
-			
-			<Compile Include="CEN\DSMPractica\UsuarioCEN_Contactar.cs" />
-			
-			<Compile Include="CEN\DSMPractica\UsuarioCEN_CanjearPuntos.cs" />
-			
-			
-			
 	<Compile Include="EN\DSMPractica\ValoracionEN.cs" />
 	<Compile Include="CEN\DSMPractica\ValoracionCEN.cs" />
 	<Compile Include="CAD\DSMPractica\IValoracionCAD.cs" />
@@ -281,6 +263,17 @@
 			
 			
 			
+	<Compile Include="EN\DSMPractica\UsuarioEN.cs" />
+	<Compile Include="CEN\DSMPractica\UsuarioCEN.cs" />
+	<Compile Include="CAD\DSMPractica\IUsuarioCAD.cs" />
+	<Compile Include="CAD\DSMPractica\UsuarioCAD.cs" />
+	<Compile Include="CP\DSMPractica\UsuarioCP.cs" />
+			
+			
+			
+			
+			
+			
 	<Compile Include="Enumerated\DSMPractica\TipoComidaEnum.cs" />
 	<Compile Include="Enumerated\DSMPractica\EstadoPedidoEnum.cs" />
 	<Compile Include="Enumerated\DSMPractica\TipoCategoriaEnum.cs" />
@@ -301,7 +294,6 @@
 		  
 	<EmbeddedResource Include="Mappings\DSMPractica\pedido.hbm.xml" />
 	<EmbeddedResource Include="Mappings\DSMPractica\carta.hbm.xml" />
-	<EmbeddedResource Include="Mappings\DSMPractica\usuario.hbm.xml" />
 	<EmbeddedResource Include="Mappings\DSMPractica\valoracion.hbm.xml" />
 	<EmbeddedResource Include="Mappings\DSMPractica\producto.hbm.xml" />
 	<EmbeddedResource Include="Mappings\DSMPractica\ingrediente.hbm.xml" />
@@ -310,6 +302,7 @@
 	<EmbeddedResource Include="Mappings\DSMPractica\ofertas.hbm.xml" />
 	<EmbeddedResource Include="Mappings\DSMPractica\factura.hbm.xml" />
 	<EmbeddedResource Include="Mappings\DSMPractica\notificacion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\DSMPractica\usuario.hbm.xml" />
 	
 	
 

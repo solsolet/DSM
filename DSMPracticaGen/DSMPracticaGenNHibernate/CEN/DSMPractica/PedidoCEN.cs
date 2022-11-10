@@ -39,7 +39,7 @@ public IPedidoCAD get_IPedidoCAD ()
         return this._IPedidoCAD;
 }
 
-public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_cliente, float p_precio, int p_usuario, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum p_estado, Nullable<DateTime> p_fecha, System.Collections.Generic.IList<int> p_notificacion)
+public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_cliente, float p_precio, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum p_estado, Nullable<DateTime> p_fecha, System.Collections.Generic.IList<int> p_notificacion, int p_usuario_0)
 {
         PedidoEN pedidoEN = null;
         int oid;
@@ -53,14 +53,6 @@ public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_
         pedidoEN.Cliente = p_cliente;
 
         pedidoEN.Precio = p_precio;
-
-
-        if (p_usuario != -1) {
-                // El argumento p_usuario -> Property usuario es oid = false
-                // Lista de oids id
-                pedidoEN.Usuario = new DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN ();
-                pedidoEN.Usuario.Id = p_usuario;
-        }
 
         pedidoEN.Estado = p_estado;
 
@@ -78,6 +70,14 @@ public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_
 
         else{
                 pedidoEN.Notificacion = new System.Collections.Generic.List<DSMPracticaGenNHibernate.EN.DSMPractica.NotificacionEN>();
+        }
+
+
+        if (p_usuario_0 != -1) {
+                // El argumento p_usuario_0 -> Property usuario_0 es oid = false
+                // Lista de oids id
+                pedidoEN.Usuario_0 = new DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN ();
+                pedidoEN.Usuario_0.Id = p_usuario_0;
         }
 
         //Call to PedidoCAD

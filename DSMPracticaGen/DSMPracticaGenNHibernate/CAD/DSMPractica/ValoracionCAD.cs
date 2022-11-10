@@ -122,19 +122,19 @@ public int New_ (ValoracionEN valoracion)
         try
         {
                 SessionInitializeTransaction ();
-                if (valoracion.Usuario != null) {
-                        // Argumento OID y no colección.
-                        valoracion.Usuario = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), valoracion.Usuario.Id);
-
-                        valoracion.Usuario.Valoracion
-                        .Add (valoracion);
-                }
                 if (valoracion.Pedido != null) {
                         // Argumento OID y no colección.
                         valoracion.Pedido = (DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN), valoracion.Pedido.Id);
 
                         valoracion.Pedido.Valoracion
                                 = valoracion;
+                }
+                if (valoracion.Usuario_0 != null) {
+                        // Argumento OID y no colección.
+                        valoracion.Usuario_0 = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), valoracion.Usuario_0.Id);
+
+                        valoracion.Usuario_0.Valoracion
+                        .Add (valoracion);
                 }
 
                 session.Save (valoracion);

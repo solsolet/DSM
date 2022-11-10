@@ -7,14 +7,11 @@
 			
 				<class name="UsuarioEN" table="Usuario"> 
 				  	
-						<id name="Id" column="attribute" type="integer"> 
+						<id name="Id" column="idUsuario" type="integer"> 
 							<generator class="hilo"/>
 						</id>
 			
 					
-					<property name="Email" type="string"> 
-						<column name="email"  unique="true" not-null="true"/>
-					</property>
 					<property name="Direccion" type="string"> 
 						<column name="direccion"  not-null="true"/>
 					</property>
@@ -36,6 +33,15 @@
 					<property name="Pass" type="string"> 
 						<column name="pass"  not-null="true"/>
 					</property>
+					<property name="Email" type="string"> 
+						<column name="email"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
 			
 			
 			
@@ -46,7 +52,7 @@
 							<key>
 							
 								
-								<column name="FK_attribute_idUsuario_NR"/>
+								<column name="FK_idUsuario_idUsuario_0"/>
 					      	</key>
 							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN"/>
 					    </bag>
@@ -57,17 +63,11 @@
 							<key>
 							
 								
-								<column name="FK_attribute_idUsuario_NR"/>
+								<column name="FK_idUsuario_idUsuario_0"/>
 					      	</key>
 							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN"/>
 					    </bag>
 					
-			
-			
-			
-			
-			
-			
 					
 					
 					

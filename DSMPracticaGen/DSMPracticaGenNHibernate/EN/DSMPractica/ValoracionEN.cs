@@ -20,13 +20,6 @@ private string descripcion;
 
 
 /**
- *	Atributo usuario
- */
-private DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario;
-
-
-
-/**
  *	Atributo pedido
  */
 private DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido;
@@ -37,6 +30,13 @@ private DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido;
  *	Atributo id
  */
 private int id;
+
+
+
+/**
+ *	Atributo usuario_0
+ */
+private DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario_0;
 
 
 
@@ -55,12 +55,6 @@ public virtual string Descripcion {
 
 
 
-public virtual DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN Usuario {
-        get { return usuario; } set { usuario = value;  }
-}
-
-
-
 public virtual DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN Pedido {
         get { return pedido; } set { pedido = value;  }
 }
@@ -73,6 +67,12 @@ public virtual int Id {
 
 
 
+public virtual DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN Usuario_0 {
+        get { return usuario_0; } set { usuario_0 = value;  }
+}
+
+
+
 
 
 public ValoracionEN()
@@ -81,20 +81,20 @@ public ValoracionEN()
 
 
 
-public ValoracionEN(int id, int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido
+public ValoracionEN(int id, int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario_0
                     )
 {
-        this.init (Id, puntuacion, descripcion, usuario, pedido);
+        this.init (Id, puntuacion, descripcion, pedido, usuario_0);
 }
 
 
 public ValoracionEN(ValoracionEN valoracion)
 {
-        this.init (Id, valoracion.Puntuacion, valoracion.Descripcion, valoracion.Usuario, valoracion.Pedido);
+        this.init (Id, valoracion.Puntuacion, valoracion.Descripcion, valoracion.Pedido, valoracion.Usuario_0);
 }
 
 private void init (int id
-                   , int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido)
+                   , int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario_0)
 {
         this.Id = id;
 
@@ -103,9 +103,9 @@ private void init (int id
 
         this.Descripcion = descripcion;
 
-        this.Usuario = usuario;
-
         this.Pedido = pedido;
+
+        this.Usuario_0 = usuario_0;
 }
 
 public override bool Equals (object obj)

@@ -39,7 +39,7 @@ public IValoracionCAD get_IValoracionCAD ()
         return this._IValoracionCAD;
 }
 
-public int New_ (int p_puntuacion, string p_descripcion, int p_usuario, int p_pedido)
+public int New_ (int p_puntuacion, string p_descripcion, int p_pedido, int p_usuario_0)
 {
         ValoracionEN valoracionEN = null;
         int oid;
@@ -51,19 +51,19 @@ public int New_ (int p_puntuacion, string p_descripcion, int p_usuario, int p_pe
         valoracionEN.Descripcion = p_descripcion;
 
 
-        if (p_usuario != -1) {
-                // El argumento p_usuario -> Property usuario es oid = false
-                // Lista de oids id
-                valoracionEN.Usuario = new DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN ();
-                valoracionEN.Usuario.Id = p_usuario;
-        }
-
-
         if (p_pedido != -1) {
                 // El argumento p_pedido -> Property pedido es oid = false
                 // Lista de oids id
                 valoracionEN.Pedido = new DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN ();
                 valoracionEN.Pedido.Id = p_pedido;
+        }
+
+
+        if (p_usuario_0 != -1) {
+                // El argumento p_usuario_0 -> Property usuario_0 es oid = false
+                // Lista de oids id
+                valoracionEN.Usuario_0 = new DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN ();
+                valoracionEN.Usuario_0.Id = p_usuario_0;
         }
 
         //Call to ValoracionCAD
