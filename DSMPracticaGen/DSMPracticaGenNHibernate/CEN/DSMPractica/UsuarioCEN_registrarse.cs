@@ -19,7 +19,7 @@ namespace DSMPracticaGenNHibernate.CEN.DSMPractica
 {
 public partial class UsuarioCEN
 {
-public void Registrarse (string p_oid)
+public void Registrarse (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Usuario_registrarse) ENABLED START*/
 

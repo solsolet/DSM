@@ -6,7 +6,7 @@ namespace DSMPracticaGenNHibernate.CAD.DSMPractica
 {
 public partial interface IProductoCAD
 {
-ProductoEN ReadOIDDefault (string nombre
+ProductoEN ReadOIDDefault (int id
                            );
 
 void ModifyDefault (ProductoEN producto);
@@ -15,16 +15,16 @@ System.Collections.Generic.IList<ProductoEN> ReadAllDefault (int first, int size
 
 
 
-string New_ (ProductoEN producto);
+int New_ (ProductoEN producto);
 
 void Modify (ProductoEN producto);
 
 
-void Destroy (string nombre
+void Destroy (int id
               );
 
 
-ProductoEN ReadOID (string nombre
+ProductoEN ReadOID (int id
                     );
 
 
@@ -32,12 +32,12 @@ System.Collections.Generic.IList<ProductoEN> ReadAll (int first, int size);
 
 
 
-System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria ();
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria (int ? p_categoria);
 
 
-System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio ();
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio (float ? precio);
 
 
-void AsignarCarta (string p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs);
+void AsignarCarta (int p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs);
 }
 }

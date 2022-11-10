@@ -19,7 +19,7 @@ namespace DSMPracticaGenNHibernate.CEN.DSMPractica
 {
 public partial class AdministradorCEN
 {
-public void GestionarProductos (string p_oid)
+public void GestionarProductos (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Administrador_gestionarProductos) ENABLED START*/
 

@@ -36,7 +36,7 @@ public string EnviarPedido (int p_oid, Nullable<DateTime> p_fecha)
                 PedidoCAD pedidoCAD = new PedidoCAD (session);
                 ProductoCAD productoCAD = new ProductoCAD (session);
 
-                PedidoEN pedido = pedidoCAD.ReadOIDDefault (p_oid);
+                PedidoEN pedido = pedidoCAD.ReadOID (p_oid);
 
                 foreach (LinPedEN l in pedido.Linped) {
                         ProductoEN producto = l.Producto;
@@ -51,7 +51,7 @@ public string EnviarPedido (int p_oid, Nullable<DateTime> p_fecha)
         }
         catch (Exception ex)
         {
-                resultado = "bien";
+                resultado = "mal";
                 SessionRollBack ();
                 throw ex;
         }

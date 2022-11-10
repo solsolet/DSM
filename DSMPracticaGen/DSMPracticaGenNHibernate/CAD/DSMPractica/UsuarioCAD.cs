@@ -29,7 +29,7 @@ public UsuarioCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public UsuarioEN ReadOIDDefault (string email
+public UsuarioEN ReadOIDDefault (int id
                                  )
 {
         UsuarioEN usuarioEN = null;
@@ -37,7 +37,7 @@ public UsuarioEN ReadOIDDefault (string email
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), email);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,10 @@ public void ModifyDefault (UsuarioEN usuario)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Email);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
+
+                usuarioEN.Email = usuario.Email;
+
 
                 usuarioEN.Direccion = usuario.Direccion;
 
@@ -131,39 +134,16 @@ public void ModifyDefault (UsuarioEN usuario)
         }
 }
 
-
-public string New_ (UsuarioEN usuario)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-
-                session.Save (usuario);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return usuario.Email;
-}
 
 public void Modify (UsuarioEN usuario)
 {
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Email);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
+
+                usuarioEN.Email = usuario.Email;
+
 
                 usuarioEN.Direccion = usuario.Direccion;
 
@@ -202,13 +182,13 @@ public void Modify (UsuarioEN usuario)
                 SessionClose ();
         }
 }
-public void Destroy (string email
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), email);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), id);
                 session.Delete (usuarioEN);
                 SessionCommit ();
         }
@@ -229,7 +209,7 @@ public void Destroy (string email
 
 //Sin e: ReadOID
 //Con e: UsuarioEN
-public UsuarioEN ReadOID (string email
+public UsuarioEN ReadOID (int id
                           )
 {
         UsuarioEN usuarioEN = null;
@@ -237,7 +217,7 @@ public UsuarioEN ReadOID (string email
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), email);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
                 SessionCommit ();
         }
 
@@ -285,6 +265,32 @@ public System.Collections.Generic.IList<UsuarioEN> ReadAll (int first, int size)
         }
 
         return result;
+}
+
+public int New_ (UsuarioEN usuario)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+
+                session.Save (usuario);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is DSMPracticaGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new DSMPracticaGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return usuario.Id;
 }
 }
 }

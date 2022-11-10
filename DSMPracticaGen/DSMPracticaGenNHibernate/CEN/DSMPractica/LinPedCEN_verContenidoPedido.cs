@@ -24,10 +24,11 @@ public void VerContenidoPedido (int p_oid, DSMPracticaGenNHibernate.EN.DSMPracti
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_LinPed_verContenidoPedido) ENABLED START*/
 
         // Write here your custom code...
-        PedidoEN ped = _IPedidoCAD.DameporOID (pedido);
 
-        Console.WriteLine ("id: " + ped.id);
-        throw new NotImplementedException ("Method VerContenidoPedido() not yet implemented.");
+        LinPedEN linPed = _ILinPedCAD.ReadOIDDefault (p_oid);
+
+        Console.WriteLine ("id: " + linPed.Linea);
+        //throw new NotImplementedException ("Method VerContenidoPedido() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }

@@ -24,12 +24,12 @@ public void EntregarPedido (int p_oid)
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Pedido_entregarPedido) ENABLED START*/
 
         // Write here your custom code...
-        PedidoEN car = _IPedidoCAD.DameporOID (p_oid);
+        PedidoCAD pedidoCAD = new PedidoCAD ();
+        PedidoEN car = pedidoCAD.ReadOID (p_oid);
 
         car.Estado = Enumerated.DSMPractica.EstadoPedidoEnum.entregado;
 
-        _IEstadoCAD.Modify (car);
-        throw new NotImplementedException ("Method EntregarPedido() not yet implemented.");
+        pedidoCAD.Modify (car);
 
         /*PROTECTED REGION END*/
 }

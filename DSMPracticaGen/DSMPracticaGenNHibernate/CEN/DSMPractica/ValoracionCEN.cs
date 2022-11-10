@@ -39,7 +39,7 @@ public IValoracionCAD get_IValoracionCAD ()
         return this._IValoracionCAD;
 }
 
-public int New_ (int p_puntuacion, string p_descripcion, string p_usuario, int p_pedido)
+public int New_ (int p_puntuacion, string p_descripcion, int p_usuario, int p_pedido)
 {
         ValoracionEN valoracionEN = null;
         int oid;
@@ -51,17 +51,17 @@ public int New_ (int p_puntuacion, string p_descripcion, string p_usuario, int p
         valoracionEN.Descripcion = p_descripcion;
 
 
-        if (p_usuario != null) {
+        if (p_usuario != -1) {
                 // El argumento p_usuario -> Property usuario es oid = false
-                // Lista de oids puntuacion
+                // Lista de oids id
                 valoracionEN.Usuario = new DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN ();
-                valoracionEN.Usuario.Email = p_usuario;
+                valoracionEN.Usuario.Id = p_usuario;
         }
 
 
         if (p_pedido != -1) {
                 // El argumento p_pedido -> Property pedido es oid = false
-                // Lista de oids puntuacion
+                // Lista de oids id
                 valoracionEN.Pedido = new DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN ();
                 valoracionEN.Pedido.Id = p_pedido;
         }
@@ -72,31 +72,32 @@ public int New_ (int p_puntuacion, string p_descripcion, string p_usuario, int p
         return oid;
 }
 
-public void Modify (int p_Valoracion_OID, string p_descripcion)
+public void Modify (int p_Valoracion_OID, int p_puntuacion, string p_descripcion)
 {
         ValoracionEN valoracionEN = null;
 
         //Initialized ValoracionEN
         valoracionEN = new ValoracionEN ();
-        valoracionEN.Puntuacion = p_Valoracion_OID;
+        valoracionEN.Id = p_Valoracion_OID;
+        valoracionEN.Puntuacion = p_puntuacion;
         valoracionEN.Descripcion = p_descripcion;
         //Call to ValoracionCAD
 
         _IValoracionCAD.Modify (valoracionEN);
 }
 
-public void Destroy (int puntuacion
+public void Destroy (int id
                      )
 {
-        _IValoracionCAD.Destroy (puntuacion);
+        _IValoracionCAD.Destroy (id);
 }
 
-public ValoracionEN ReadOID (int puntuacion
+public ValoracionEN ReadOID (int id
                              )
 {
         ValoracionEN valoracionEN = null;
 
-        valoracionEN = _IValoracionCAD.ReadOID (puntuacion);
+        valoracionEN = _IValoracionCAD.ReadOID (id);
         return valoracionEN;
 }
 

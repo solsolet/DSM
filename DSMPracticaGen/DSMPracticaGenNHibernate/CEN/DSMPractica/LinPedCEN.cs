@@ -39,7 +39,7 @@ public ILinPedCAD get_ILinPedCAD ()
         return this._ILinPedCAD;
 }
 
-public int New_ (string p_producto, int p_pedido, int p_cantidad, float p_importe)
+public int New_ (int p_producto, int p_pedido, int p_cantidad, float p_importe)
 {
         LinPedEN linPedEN = null;
         int oid;
@@ -47,11 +47,11 @@ public int New_ (string p_producto, int p_pedido, int p_cantidad, float p_import
         //Initialized LinPedEN
         linPedEN = new LinPedEN ();
 
-        if (p_producto != null) {
+        if (p_producto != -1) {
                 // El argumento p_producto -> Property producto es oid = false
                 // Lista de oids linea
                 linPedEN.Producto = new DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN ();
-                linPedEN.Producto.Nombre = p_producto;
+                linPedEN.Producto.Id = p_producto;
         }
 
 

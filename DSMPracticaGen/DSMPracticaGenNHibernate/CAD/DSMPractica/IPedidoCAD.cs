@@ -36,6 +36,6 @@ System.Collections.Generic.IList<PedidoEN> ReadAll (int first, int size);
 
 
 
-System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN p_nomProducto);
+System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (int p_nomProducto);
 }
 }

@@ -29,7 +29,7 @@ public ValoracionCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public ValoracionEN ReadOIDDefault (int puntuacion
+public ValoracionEN ReadOIDDefault (int id
                                     )
 {
         ValoracionEN valoracionEN = null;
@@ -37,7 +37,7 @@ public ValoracionEN ReadOIDDefault (int puntuacion
         try
         {
                 SessionInitializeTransaction ();
-                valoracionEN = (ValoracionEN)session.Get (typeof(ValoracionEN), puntuacion);
+                valoracionEN = (ValoracionEN)session.Get (typeof(ValoracionEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,10 @@ public void ModifyDefault (ValoracionEN valoracion)
         try
         {
                 SessionInitializeTransaction ();
-                ValoracionEN valoracionEN = (ValoracionEN)session.Load (typeof(ValoracionEN), valoracion.Puntuacion);
+                ValoracionEN valoracionEN = (ValoracionEN)session.Load (typeof(ValoracionEN), valoracion.Id);
+
+                valoracionEN.Puntuacion = valoracion.Puntuacion;
+
 
                 valoracionEN.Descripcion = valoracion.Descripcion;
 
@@ -121,7 +124,7 @@ public int New_ (ValoracionEN valoracion)
                 SessionInitializeTransaction ();
                 if (valoracion.Usuario != null) {
                         // Argumento OID y no colección.
-                        valoracion.Usuario = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), valoracion.Usuario.Email);
+                        valoracion.Usuario = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), valoracion.Usuario.Id);
 
                         valoracion.Usuario.Valoracion
                         .Add (valoracion);
@@ -151,7 +154,7 @@ public int New_ (ValoracionEN valoracion)
                 SessionClose ();
         }
 
-        return valoracion.Puntuacion;
+        return valoracion.Id;
 }
 
 public void Modify (ValoracionEN valoracion)
@@ -159,7 +162,10 @@ public void Modify (ValoracionEN valoracion)
         try
         {
                 SessionInitializeTransaction ();
-                ValoracionEN valoracionEN = (ValoracionEN)session.Load (typeof(ValoracionEN), valoracion.Puntuacion);
+                ValoracionEN valoracionEN = (ValoracionEN)session.Load (typeof(ValoracionEN), valoracion.Id);
+
+                valoracionEN.Puntuacion = valoracion.Puntuacion;
+
 
                 valoracionEN.Descripcion = valoracion.Descripcion;
 
@@ -180,13 +186,13 @@ public void Modify (ValoracionEN valoracion)
                 SessionClose ();
         }
 }
-public void Destroy (int puntuacion
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                ValoracionEN valoracionEN = (ValoracionEN)session.Load (typeof(ValoracionEN), puntuacion);
+                ValoracionEN valoracionEN = (ValoracionEN)session.Load (typeof(ValoracionEN), id);
                 session.Delete (valoracionEN);
                 SessionCommit ();
         }
@@ -207,7 +213,7 @@ public void Destroy (int puntuacion
 
 //Sin e: ReadOID
 //Con e: ValoracionEN
-public ValoracionEN ReadOID (int puntuacion
+public ValoracionEN ReadOID (int id
                              )
 {
         ValoracionEN valoracionEN = null;
@@ -215,7 +221,7 @@ public ValoracionEN ReadOID (int puntuacion
         try
         {
                 SessionInitializeTransaction ();
-                valoracionEN = (ValoracionEN)session.Get (typeof(ValoracionEN), puntuacion);
+                valoracionEN = (ValoracionEN)session.Get (typeof(ValoracionEN), id);
                 SessionCommit ();
         }
 

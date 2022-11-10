@@ -6,7 +6,7 @@ namespace DSMPracticaGenNHibernate.CAD.DSMPractica
 {
 public partial interface IValoracionCAD
 {
-ValoracionEN ReadOIDDefault (int puntuacion
+ValoracionEN ReadOIDDefault (int id
                              );
 
 void ModifyDefault (ValoracionEN valoracion);
@@ -20,11 +20,11 @@ int New_ (ValoracionEN valoracion);
 void Modify (ValoracionEN valoracion);
 
 
-void Destroy (int puntuacion
+void Destroy (int id
               );
 
 
-ValoracionEN ReadOID (int puntuacion
+ValoracionEN ReadOID (int id
                       );
 
 

@@ -75,6 +75,13 @@ private bool novedad;
 
 
 
+/**
+ *	Atributo id
+ */
+private int id;
+
+
+
 
 
 
@@ -138,6 +145,12 @@ public virtual bool Novedad {
 
 
 
+public virtual int Id {
+        get { return id; } set { id = value;  }
+}
+
+
+
 
 
 public ProductoEN()
@@ -149,23 +162,25 @@ public ProductoEN()
 
 
 
-public ProductoEN(string nombre, string descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum categoria, float precio, int cantidad, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> carta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> ingrediente, string foto, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, bool novedad
+public ProductoEN(int id, string nombre, string descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum categoria, float precio, int cantidad, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> carta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> ingrediente, string foto, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, bool novedad
                   )
 {
-        this.init (Nombre, descripcion, categoria, precio, cantidad, carta, ingrediente, foto, linped, novedad);
+        this.init (Id, nombre, descripcion, categoria, precio, cantidad, carta, ingrediente, foto, linped, novedad);
 }
 
 
 public ProductoEN(ProductoEN producto)
 {
-        this.init (Nombre, producto.Descripcion, producto.Categoria, producto.Precio, producto.Cantidad, producto.Carta, producto.Ingrediente, producto.Foto, producto.Linped, producto.Novedad);
+        this.init (Id, producto.Nombre, producto.Descripcion, producto.Categoria, producto.Precio, producto.Cantidad, producto.Carta, producto.Ingrediente, producto.Foto, producto.Linped, producto.Novedad);
 }
 
-private void init (string nombre
-                   , string descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum categoria, float precio, int cantidad, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> carta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> ingrediente, string foto, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, bool novedad)
+private void init (int id
+                   , string nombre, string descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum categoria, float precio, int cantidad, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN> carta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> ingrediente, string foto, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN> linped, bool novedad)
 {
-        this.Nombre = nombre;
+        this.Id = id;
 
+
+        this.Nombre = nombre;
 
         this.Descripcion = descripcion;
 
@@ -193,7 +208,7 @@ public override bool Equals (object obj)
         ProductoEN t = obj as ProductoEN;
         if (t == null)
                 return false;
-        if (Nombre.Equals (t.Nombre))
+        if (Id.Equals (t.Id))
                 return true;
         else
                 return false;
@@ -203,7 +218,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Nombre.GetHashCode ();
+        hash += this.Id.GetHashCode ();
         return hash;
 }
 }

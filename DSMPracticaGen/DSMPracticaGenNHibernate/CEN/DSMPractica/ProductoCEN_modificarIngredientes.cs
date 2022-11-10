@@ -19,7 +19,7 @@ namespace DSMPracticaGenNHibernate.CEN.DSMPractica
 {
 public partial class ProductoCEN
 {
-public void ModificarIngredientes (string p_oid)
+public void ModificarIngredientes (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Producto_modificarIngredientes) ENABLED START*/
 

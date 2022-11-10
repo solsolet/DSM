@@ -6,9 +6,15 @@
 		    
 			
 				<class name="ValoracionEN" table="Valoracion"> 
-						<id name="Puntuacion" column="puntuacion"/> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
 			
 					
+					<property name="Puntuacion" type="integer"> 
+						<column name="puntuacion"  unique="true" not-null="true"/>
+					</property>
 					<property name="Descripcion" type="string"> 
 						<column name="descripcion"  not-null="true"/>
 					</property>
@@ -18,7 +24,7 @@
 			
 		  			
 						<many-to-one name="Usuario" class="DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN" >	
-								<column name="FK_email_idUsuario_NR"/> 
+								<column name="FK_attribute_idUsuario_NR"/> 
 						</many-to-one>
 											 					
 			
@@ -29,6 +35,8 @@
         					</many-to-one>
 					 
 						
+			
+					
 					
 					
 					

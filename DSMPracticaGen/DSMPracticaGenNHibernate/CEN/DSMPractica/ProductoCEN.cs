@@ -39,10 +39,10 @@ public IProductoCAD get_IProductoCAD ()
         return this._IProductoCAD;
 }
 
-public string New_ (string p_nombre, string p_descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum p_categoria, float p_precio, int p_cantidad, System.Collections.Generic.IList<string> p_ingrediente, string p_foto, bool p_novedad)
+public int New_ (string p_nombre, string p_descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum p_categoria, float p_precio, int p_cantidad, System.Collections.Generic.IList<int> p_ingrediente, string p_foto, bool p_novedad)
 {
         ProductoEN productoEN = null;
-        string oid;
+        int oid;
 
         //Initialized ProductoEN
         productoEN = new ProductoEN ();
@@ -59,9 +59,9 @@ public string New_ (string p_nombre, string p_descripcion, DSMPracticaGenNHibern
 
         productoEN.Ingrediente = new System.Collections.Generic.List<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN>();
         if (p_ingrediente != null) {
-                foreach (string item in p_ingrediente) {
+                foreach (int item in p_ingrediente) {
                         DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN en = new DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN ();
-                        en.Nombre = item;
+                        en.Id = item;
                         productoEN.Ingrediente.Add (en);
                 }
         }
@@ -80,13 +80,14 @@ public string New_ (string p_nombre, string p_descripcion, DSMPracticaGenNHibern
         return oid;
 }
 
-public void Modify (string p_Producto_OID, string p_descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum p_categoria, float p_precio, int p_cantidad, string p_foto, bool p_novedad)
+public void Modify (int p_Producto_OID, string p_nombre, string p_descripcion, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum p_categoria, float p_precio, int p_cantidad, string p_foto, bool p_novedad)
 {
         ProductoEN productoEN = null;
 
         //Initialized ProductoEN
         productoEN = new ProductoEN ();
-        productoEN.Nombre = p_Producto_OID;
+        productoEN.Id = p_Producto_OID;
+        productoEN.Nombre = p_nombre;
         productoEN.Descripcion = p_descripcion;
         productoEN.Categoria = p_categoria;
         productoEN.Precio = p_precio;
@@ -98,18 +99,18 @@ public void Modify (string p_Producto_OID, string p_descripcion, DSMPracticaGenN
         _IProductoCAD.Modify (productoEN);
 }
 
-public void Destroy (string nombre
+public void Destroy (int id
                      )
 {
-        _IProductoCAD.Destroy (nombre);
+        _IProductoCAD.Destroy (id);
 }
 
-public ProductoEN ReadOID (string nombre
+public ProductoEN ReadOID (int id
                            )
 {
         ProductoEN productoEN = null;
 
-        productoEN = _IProductoCAD.ReadOID (nombre);
+        productoEN = _IProductoCAD.ReadOID (id);
         return productoEN;
 }
 
@@ -120,15 +121,15 @@ public System.Collections.Generic.IList<ProductoEN> ReadAll (int first, int size
         list = _IProductoCAD.ReadAll (first, size);
         return list;
 }
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria ()
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria (int ? p_categoria)
 {
-        return _IProductoCAD.FiltrarCategoria ();
+        return _IProductoCAD.FiltrarCategoria (p_categoria);
 }
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio ()
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio (float ? precio)
 {
-        return _IProductoCAD.FiltrarPrecio ();
+        return _IProductoCAD.FiltrarPrecio (precio);
 }
-public void AsignarCarta (string p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs)
+public void AsignarCarta (int p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs)
 {
         //Call to ProductoCAD
 

@@ -22,12 +22,12 @@ public partial class PedidoCEN
 public void ConfirmarPedido (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Pedido_confirmarPedido) ENABLED START*/
-
-        PedidoEN car = _IPedidoCAD.DameporOID (p_oid);
+        PedidoCAD pedidoCAD = new PedidoCAD ();
+        PedidoEN car = _IPedidoCAD.ReadOID (p_oid);
 
         car.Estado = Enumerated.DSMPractica.EstadoPedidoEnum.confirmado;
 
-        _IEstadoCAD.Modify (car);
+        pedidoCAD.Modify (car);
 
         throw new NotImplementedException ("Method ConfirmarPedido() not yet implemented.");
 

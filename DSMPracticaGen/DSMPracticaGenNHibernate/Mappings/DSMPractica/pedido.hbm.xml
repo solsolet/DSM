@@ -39,7 +39,7 @@
 			
 		  			
 						<many-to-one name="Usuario" class="DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN" >	
-								<column name="FK_email_idUsuario_NR"/> 
+								<column name="FK_attribute_idUsuario_NR"/> 
 						</many-to-one>
 											 					
 			

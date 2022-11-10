@@ -29,7 +29,7 @@ public ProductoCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public ProductoEN ReadOIDDefault (string nombre
+public ProductoEN ReadOIDDefault (int id
                                   )
 {
         ProductoEN productoEN = null;
@@ -37,7 +37,7 @@ public ProductoEN ReadOIDDefault (string nombre
         try
         {
                 SessionInitializeTransaction ();
-                productoEN = (ProductoEN)session.Get (typeof(ProductoEN), nombre);
+                productoEN = (ProductoEN)session.Get (typeof(ProductoEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,10 @@ public void ModifyDefault (ProductoEN producto)
         try
         {
                 SessionInitializeTransaction ();
-                ProductoEN productoEN = (ProductoEN)session.Load (typeof(ProductoEN), producto.Nombre);
+                ProductoEN productoEN = (ProductoEN)session.Load (typeof(ProductoEN), producto.Id);
+
+                productoEN.Nombre = producto.Nombre;
+
 
                 productoEN.Descripcion = producto.Descripcion;
 
@@ -130,14 +133,14 @@ public void ModifyDefault (ProductoEN producto)
 }
 
 
-public string New_ (ProductoEN producto)
+public int New_ (ProductoEN producto)
 {
         try
         {
                 SessionInitializeTransaction ();
                 if (producto.Ingrediente != null) {
                         for (int i = 0; i < producto.Ingrediente.Count; i++) {
-                                producto.Ingrediente [i] = (DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN), producto.Ingrediente [i].Nombre);
+                                producto.Ingrediente [i] = (DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN), producto.Ingrediente [i].Id);
                                 producto.Ingrediente [i].Producto.Add (producto);
                         }
                 }
@@ -159,7 +162,7 @@ public string New_ (ProductoEN producto)
                 SessionClose ();
         }
 
-        return producto.Nombre;
+        return producto.Id;
 }
 
 public void Modify (ProductoEN producto)
@@ -167,7 +170,10 @@ public void Modify (ProductoEN producto)
         try
         {
                 SessionInitializeTransaction ();
-                ProductoEN productoEN = (ProductoEN)session.Load (typeof(ProductoEN), producto.Nombre);
+                ProductoEN productoEN = (ProductoEN)session.Load (typeof(ProductoEN), producto.Id);
+
+                productoEN.Nombre = producto.Nombre;
+
 
                 productoEN.Descripcion = producto.Descripcion;
 
@@ -203,13 +209,13 @@ public void Modify (ProductoEN producto)
                 SessionClose ();
         }
 }
-public void Destroy (string nombre
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                ProductoEN productoEN = (ProductoEN)session.Load (typeof(ProductoEN), nombre);
+                ProductoEN productoEN = (ProductoEN)session.Load (typeof(ProductoEN), id);
                 session.Delete (productoEN);
                 SessionCommit ();
         }
@@ -230,7 +236,7 @@ public void Destroy (string nombre
 
 //Sin e: ReadOID
 //Con e: ProductoEN
-public ProductoEN ReadOID (string nombre
+public ProductoEN ReadOID (int id
                            )
 {
         ProductoEN productoEN = null;
@@ -238,7 +244,7 @@ public ProductoEN ReadOID (string nombre
         try
         {
                 SessionInitializeTransaction ();
-                productoEN = (ProductoEN)session.Get (typeof(ProductoEN), nombre);
+                productoEN = (ProductoEN)session.Get (typeof(ProductoEN), id);
                 SessionCommit ();
         }
 
@@ -288,15 +294,16 @@ public System.Collections.Generic.IList<ProductoEN> ReadAll (int first, int size
         return result;
 }
 
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria ()
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarCategoria (int ? p_categoria)
 {
         System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ProductoEN self where select prod FROM ProductoEN as prod where prod.Categoria =: p_cProducto";
+                //String sql = @"FROM ProductoEN self where select prod FROM ProductoEN as prod where prod.Categoria =: p_categoria";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ProductoENfiltrarCategoriaHQL");
+                query.SetParameter ("p_categoria", p_categoria);
 
                 result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN>();
                 SessionCommit ();
@@ -317,15 +324,16 @@ public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.
 
         return result;
 }
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio ()
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> FiltrarPrecio (float ? precio)
 {
         System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ProductoEN self where select prod FROM ProductoEN prod.Precio =: p_pProducto";
+                //String sql = @"FROM ProductoEN self where select prod FROM ProductoEN where prod.Precio =: p_pProducto";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ProductoENfiltrarPrecioHQL");
+                query.SetParameter ("precio", precio);
 
                 result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN>();
                 SessionCommit ();
@@ -346,7 +354,7 @@ public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.
 
         return result;
 }
-public void AsignarCarta (string p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs)
+public void AsignarCarta (int p_Producto_OID, System.Collections.Generic.IList<int> p_carta_OIDs)
 {
         DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN productoEN = null;
         try

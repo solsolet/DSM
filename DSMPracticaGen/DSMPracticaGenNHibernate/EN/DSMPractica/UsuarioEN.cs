@@ -75,6 +75,13 @@ private String pass;
 
 
 
+/**
+ *	Atributo id
+ */
+private int id;
+
+
+
 
 
 
@@ -138,6 +145,12 @@ public virtual String Pass {
 
 
 
+public virtual int Id {
+        get { return id; } set { id = value;  }
+}
+
+
+
 
 
 public UsuarioEN()
@@ -148,23 +161,25 @@ public UsuarioEN()
 
 
 
-public UsuarioEN(string email, string direccion, long tarjeta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> pedido, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> valoracion, string nombre, string apellidos, int telefono, int puntos, String pass
+public UsuarioEN(int id, string email, string direccion, long tarjeta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> pedido, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> valoracion, string nombre, string apellidos, int telefono, int puntos, String pass
                  )
 {
-        this.init (Email, direccion, tarjeta, pedido, valoracion, nombre, apellidos, telefono, puntos, pass);
+        this.init (Id, email, direccion, tarjeta, pedido, valoracion, nombre, apellidos, telefono, puntos, pass);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (Email, usuario.Direccion, usuario.Tarjeta, usuario.Pedido, usuario.Valoracion, usuario.Nombre, usuario.Apellidos, usuario.Telefono, usuario.Puntos, usuario.Pass);
+        this.init (Id, usuario.Email, usuario.Direccion, usuario.Tarjeta, usuario.Pedido, usuario.Valoracion, usuario.Nombre, usuario.Apellidos, usuario.Telefono, usuario.Puntos, usuario.Pass);
 }
 
-private void init (string email
-                   , string direccion, long tarjeta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> pedido, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> valoracion, string nombre, string apellidos, int telefono, int puntos, String pass)
+private void init (int id
+                   , string email, string direccion, long tarjeta, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> pedido, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ValoracionEN> valoracion, string nombre, string apellidos, int telefono, int puntos, String pass)
 {
-        this.Email = email;
+        this.Id = id;
 
+
+        this.Email = email;
 
         this.Direccion = direccion;
 
@@ -192,7 +207,7 @@ public override bool Equals (object obj)
         UsuarioEN t = obj as UsuarioEN;
         if (t == null)
                 return false;
-        if (Email.Equals (t.Email))
+        if (Id.Equals (t.Id))
                 return true;
         else
                 return false;
@@ -202,7 +217,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Email.GetHashCode ();
+        hash += this.Id.GetHashCode ();
         return hash;
 }
 }

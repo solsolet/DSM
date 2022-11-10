@@ -19,7 +19,7 @@ namespace DSMPracticaGenNHibernate.CEN.DSMPractica
 {
 public partial class UsuarioCEN
 {
-public void CanjearPuntos (string p_oid)
+public void CanjearPuntos (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Usuario_canjearPuntos) ENABLED START*/
 

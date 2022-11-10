@@ -31,7 +31,7 @@
 									<column name="FK_idCarta_idCarta"/> 
 							</key>
       						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN">
-									<column name="FK_nombre_idCarta_0"/> 
+									<column name="FK_id_idCarta_0"/> 
       						</many-to-many>
     					</bag>
 			

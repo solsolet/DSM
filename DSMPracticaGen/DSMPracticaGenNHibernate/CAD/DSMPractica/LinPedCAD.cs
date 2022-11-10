@@ -124,7 +124,7 @@ public int New_ (LinPedEN linPed)
                 SessionInitializeTransaction ();
                 if (linPed.Producto != null) {
                         // Argumento OID y no colección.
-                        linPed.Producto = (DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN), linPed.Producto.Nombre);
+                        linPed.Producto = (DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN), linPed.Producto.Id);
 
                         linPed.Producto.Linped
                         .Add (linPed);

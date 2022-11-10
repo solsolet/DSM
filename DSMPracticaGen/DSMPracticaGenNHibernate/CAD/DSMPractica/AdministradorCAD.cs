@@ -29,7 +29,7 @@ public AdministradorCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public AdministradorEN ReadOIDDefault (string nombre
+public AdministradorEN ReadOIDDefault (int id
                                        )
 {
         AdministradorEN administradorEN = null;
@@ -37,7 +37,7 @@ public AdministradorEN ReadOIDDefault (string nombre
         try
         {
                 SessionInitializeTransaction ();
-                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), nombre);
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,10 @@ public void ModifyDefault (AdministradorEN administrador)
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Nombre);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Id);
+
+                administradorEN.Nombre = administrador.Nombre;
+
 
                 administradorEN.Pass = administrador.Pass;
 
@@ -112,7 +115,7 @@ public void ModifyDefault (AdministradorEN administrador)
 }
 
 
-public string New_ (AdministradorEN administrador)
+public int New_ (AdministradorEN administrador)
 {
         try
         {
@@ -135,7 +138,7 @@ public string New_ (AdministradorEN administrador)
                 SessionClose ();
         }
 
-        return administrador.Nombre;
+        return administrador.Id;
 }
 
 public void Modify (AdministradorEN administrador)
@@ -143,7 +146,13 @@ public void Modify (AdministradorEN administrador)
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Nombre);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Id);
+
+                administradorEN.Nombre = administrador.Nombre;
+
+
+                administradorEN.Pass = administrador.Pass;
+
                 session.Update (administradorEN);
                 SessionCommit ();
         }
@@ -161,13 +170,13 @@ public void Modify (AdministradorEN administrador)
                 SessionClose ();
         }
 }
-public void Destroy (string nombre
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), nombre);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), id);
                 session.Delete (administradorEN);
                 SessionCommit ();
         }
@@ -188,7 +197,7 @@ public void Destroy (string nombre
 
 //Sin e: ReadOID
 //Con e: AdministradorEN
-public AdministradorEN ReadOID (string nombre
+public AdministradorEN ReadOID (int id
                                 )
 {
         AdministradorEN administradorEN = null;
@@ -196,7 +205,7 @@ public AdministradorEN ReadOID (string nombre
         try
         {
                 SessionInitializeTransaction ();
-                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), nombre);
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), id);
                 SessionCommit ();
         }
 

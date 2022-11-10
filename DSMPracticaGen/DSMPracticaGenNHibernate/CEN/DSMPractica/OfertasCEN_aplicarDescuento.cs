@@ -23,12 +23,13 @@ public void AplicarDescuento (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Ofertas_aplicarDescuento) ENABLED START*/
 
-        OfertaEN sale = _IOfertaCAD.DameporOID (p_oid);
+        OfertasCAD ofertasCAD = new OfertasCAD ();
+        OfertasEN sale = ofertasCAD.ReadOID (p_oid);
 
         sale.Precio = sale.Precio - sale.Descuento;
-        _IOfertaCAD.Modify (sale);
+        ofertasCAD.Modify (sale);
 
-        throw new NotImplementedException ("Method AplicarDescuento() not yet implemented.");
+
 
         /*PROTECTED REGION END*/
 }

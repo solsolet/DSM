@@ -19,7 +19,7 @@ namespace DSMPracticaGenNHibernate.CEN.DSMPractica
 {
 public partial class AdministradorCEN
 {
-public void BanearUsuario (string p_oid)
+public void BanearUsuario (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Administrador_banearUsuario) ENABLED START*/
 

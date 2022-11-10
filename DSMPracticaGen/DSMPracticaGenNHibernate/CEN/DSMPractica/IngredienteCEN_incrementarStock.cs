@@ -19,7 +19,7 @@ namespace DSMPracticaGenNHibernate.CEN.DSMPractica
 {
 public partial class IngredienteCEN
 {
-public void IncrementarStock (string p_oid, int p_cantidad)
+public void IncrementarStock (int p_oid, int p_cantidad)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Ingrediente_incrementarStock) ENABLED START*/
 

@@ -23,7 +23,7 @@
 			
 		  			
 						<many-to-one name="Producto" class="DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN" >	
-								<column name="FK_nombre_idProducto"/> 
+								<column name="FK_id_idProducto"/> 
 						</many-to-one>
 											 					
 			

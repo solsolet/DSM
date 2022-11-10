@@ -24,10 +24,10 @@ public void EstadoPedido (int p_oid)
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Pedido_estadoPedido) ENABLED START*/
 
         // Write here your custom code...
-        PedidoEN car = _IPedidoCAD.DameporOID (p_oid);
+        PedidoCAD pedidoCAD = new PedidoCAD ();
+        PedidoEN car = pedidoCAD.ReadOID (p_oid);
 
         Console.WriteLine ("Estado: " + car.Estado);
-        throw new NotImplementedException ("Method EstadoPedido() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }

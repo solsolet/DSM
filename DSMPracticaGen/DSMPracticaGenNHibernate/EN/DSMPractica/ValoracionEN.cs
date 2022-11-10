@@ -33,6 +33,13 @@ private DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido;
 
 
 
+/**
+ *	Atributo id
+ */
+private int id;
+
+
+
 
 
 
@@ -60,6 +67,12 @@ public virtual DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN Pedido {
 
 
 
+public virtual int Id {
+        get { return id; } set { id = value;  }
+}
+
+
+
 
 
 public ValoracionEN()
@@ -68,23 +81,25 @@ public ValoracionEN()
 
 
 
-public ValoracionEN(int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido
+public ValoracionEN(int id, int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido
                     )
 {
-        this.init (Puntuacion, descripcion, usuario, pedido);
+        this.init (Id, puntuacion, descripcion, usuario, pedido);
 }
 
 
 public ValoracionEN(ValoracionEN valoracion)
 {
-        this.init (Puntuacion, valoracion.Descripcion, valoracion.Usuario, valoracion.Pedido);
+        this.init (Id, valoracion.Puntuacion, valoracion.Descripcion, valoracion.Usuario, valoracion.Pedido);
 }
 
-private void init (int puntuacion
-                   , string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido)
+private void init (int id
+                   , int puntuacion, string descripcion, DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN usuario, DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN pedido)
 {
-        this.Puntuacion = puntuacion;
+        this.Id = id;
 
+
+        this.Puntuacion = puntuacion;
 
         this.Descripcion = descripcion;
 
@@ -100,7 +115,7 @@ public override bool Equals (object obj)
         ValoracionEN t = obj as ValoracionEN;
         if (t == null)
                 return false;
-        if (Puntuacion.Equals (t.Puntuacion))
+        if (Id.Equals (t.Id))
                 return true;
         else
                 return false;
@@ -110,7 +125,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Puntuacion.GetHashCode ();
+        hash += this.Id.GetHashCode ();
         return hash;
 }
 }

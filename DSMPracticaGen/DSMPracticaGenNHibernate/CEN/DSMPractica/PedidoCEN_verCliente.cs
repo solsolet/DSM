@@ -24,10 +24,10 @@ public void VerCliente (int p_oid)
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Pedido_verCliente) ENABLED START*/
 
         // Write here your custom code...
-        PedidoEN car = _IPedidoCAD.DameporOID (p_oid);
+        PedidoCAD pedidoCAD = new PedidoCAD ();
+        PedidoEN car = pedidoCAD.ReadOID (p_oid);
 
         Console.WriteLine ("Cliente: " + car.Cliente);
-        throw new NotImplementedException ("Method VerCliente() not yet implemented.");
 
         /*PROTECTED REGION END*/
 }

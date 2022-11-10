@@ -157,13 +157,13 @@
 			
 			
 			
-			
 			<Compile Include="CEN\DSMPractica\UsuarioCEN_Registrarse.cs" />
 			
 			
 			<Compile Include="CEN\DSMPractica\UsuarioCEN_Contactar.cs" />
 			
 			<Compile Include="CEN\DSMPractica\UsuarioCEN_CanjearPuntos.cs" />
+			
 			
 			
 	<Compile Include="EN\DSMPractica\ValoracionEN.cs" />

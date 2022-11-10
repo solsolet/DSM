@@ -6,9 +6,15 @@
 		    
 			
 				<class name="ProductoEN" table="Producto"> 
-						<id name="Nombre" column="nombre"/> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
 			
 					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  unique="true" not-null="true"/>
+					</property>
 					<property name="Descripcion" type="string"> 
 						<column name="descripcion"  not-null="true"/>
 					</property>
@@ -38,7 +44,7 @@
 						<bag name="Carta" table="[carta_carta_0]" inverse="true" >
 							<key>
 								
-									<column name="FK_nombre_idCarta_0"/> 
+									<column name="FK_id_idCarta_0"/> 
 							</key>
       						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.CartaEN">
 									<column name="FK_idCarta_idCarta"/> 
@@ -49,10 +55,10 @@
 						<bag name="Ingrediente" table="[ingrediente_producto]" inverse="true" >
 							<key>
 								
-									<column name="FK_nombre_idProducto"/> 
+									<column name="FK_id_idProducto"/> 
 							</key>
       						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN">
-									<column name="FK_nombreIngrediente_idIngrediente"/> 
+									<column name="FK_id_idIngrediente"/> 
       						</many-to-many>
     					</bag>
 			
@@ -62,12 +68,14 @@
 							<key>
 							
 								
-								<column name="FK_nombre_idProducto"/>
+								<column name="FK_id_idProducto"/>
 					      	</key>
 							<one-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.LinPedEN"/>
 					    </bag>
 					
 			
+			
+					
 					
 					
 					
@@ -82,7 +90,7 @@
 		 </class>	
 		  
 		  <query name="ProductoENReadAllHQL">from ProductoEN</query>
-		  <query name="ProductoENfiltrarCategoriaHQL"><![CDATA[select prod FROM ProductoEN as prod where prod.Categoria =: p_cProducto]]></query>
-		  <query name="ProductoENfiltrarPrecioHQL"><![CDATA[select prod FROM ProductoEN prod.Precio =: p_pProducto]]></query>
+		  <query name="ProductoENfiltrarCategoriaHQL"><![CDATA[select prod FROM ProductoEN as prod where prod.Categoria =: p_categoria]]></query>
+		  <query name="ProductoENfiltrarPrecioHQL"><![CDATA[select prod FROM ProductoEN where prod.Precio =: p_pProducto]]></query>
 		</hibernate-mapping>
 	

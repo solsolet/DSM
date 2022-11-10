@@ -6,9 +6,15 @@
 		    
 			
 				<class name="IngredienteEN" table="Ingrediente"> 
-						<id name="Nombre" column="nombreIngrediente"/> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
 			
 					
+					<property name="Nombre" type="string"> 
+						<column name="nombreIngrediente"  unique="true" not-null="true"/>
+					</property>
 					<property name="Tipo" > 
 						<column name="tipo"  not-null="true"/>
 					</property>
@@ -25,15 +31,17 @@
 						<bag name="Producto" table="[ingrediente_producto]"  >
 							<key>
 								
-									<column name="FK_nombreIngrediente_idIngrediente"/> 
+									<column name="FK_id_idIngrediente"/> 
 							</key>
       						<many-to-many class="DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN">
-									<column name="FK_nombre_idProducto"/> 
+									<column name="FK_id_idProducto"/> 
       						</many-to-many>
     					</bag>
 			
 			
 			
+			
+					
 					
 					
 					
@@ -43,6 +51,6 @@
 		 </class>	
 		  
 		  <query name="IngredienteENReadAllHQL">from IngredienteEN</query>
-		  <query name="IngredienteENfiltrarComidaHQL"><![CDATA[select ing FROM IngredienteEN as ing where ing.Tipo =: p_tIng]]></query>
+		  <query name="IngredienteENfiltrarComidaHQL"><![CDATA[select ing FROM IngredienteEN as ing where ing.Tipo =: p_tComida]]></query>
 		</hibernate-mapping>
 	

@@ -139,7 +139,7 @@ public int New_ (PedidoEN pedido)
                 SessionInitializeTransaction ();
                 if (pedido.Usuario != null) {
                         // Argumento OID y no colección.
-                        pedido.Usuario = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), pedido.Usuario.Email);
+                        pedido.Usuario = (DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN)session.Load (typeof(DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN), pedido.Usuario.Id);
 
                         pedido.Usuario.Pedido
                         .Add (pedido);
@@ -297,7 +297,7 @@ public System.Collections.Generic.IList<PedidoEN> ReadAll (int first, int size)
         return result;
 }
 
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN p_nomProducto)
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (int p_nomProducto)
 {
         System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> result;
         try

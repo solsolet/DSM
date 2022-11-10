@@ -22,12 +22,12 @@ public partial class OfertasCEN
 public void VerPuntos (int p_oid)
 {
         /*PROTECTED REGION ID(DSMPracticaGenNHibernate.CEN.DSMPractica_Ofertas_verPuntos) ENABLED START*/
-
-        OfertaEN sale = _IOfertaCAD.DameporOID (p_oid);
+        OfertasCAD ofertasCAD = new OfertasCAD ();
+        OfertasEN sale = ofertasCAD.ReadOID (p_oid);
 
         Console.WriteLine ("Puntos: " + sale.Puntos);
 
-        throw new NotImplementedException ("Method VerPuntos() not yet implemented.");
+
 
         /*PROTECTED REGION END*/
 }

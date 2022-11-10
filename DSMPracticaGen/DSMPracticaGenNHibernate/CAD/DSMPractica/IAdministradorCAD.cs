@@ -6,7 +6,7 @@ namespace DSMPracticaGenNHibernate.CAD.DSMPractica
 {
 public partial interface IAdministradorCAD
 {
-AdministradorEN ReadOIDDefault (string nombre
+AdministradorEN ReadOIDDefault (int id
                                 );
 
 void ModifyDefault (AdministradorEN administrador);
@@ -18,16 +18,16 @@ System.Collections.Generic.IList<AdministradorEN> ReadAllDefault (int first, int
 
 
 
-string New_ (AdministradorEN administrador);
+int New_ (AdministradorEN administrador);
 
 void Modify (AdministradorEN administrador);
 
 
-void Destroy (string nombre
+void Destroy (int id
               );
 
 
-AdministradorEN ReadOID (string nombre
+AdministradorEN ReadOID (int id
                          );
 
 

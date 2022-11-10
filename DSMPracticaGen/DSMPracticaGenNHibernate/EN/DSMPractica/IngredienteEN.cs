@@ -40,6 +40,13 @@ private string alergeno;
 
 
 
+/**
+ *	Atributo id
+ */
+private int id;
+
+
+
 
 
 
@@ -73,6 +80,12 @@ public virtual string Alergeno {
 
 
 
+public virtual int Id {
+        get { return id; } set { id = value;  }
+}
+
+
+
 
 
 public IngredienteEN()
@@ -82,23 +95,25 @@ public IngredienteEN()
 
 
 
-public IngredienteEN(string nombre, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> producto, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum tipo, int stock, string alergeno
+public IngredienteEN(int id, string nombre, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> producto, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum tipo, int stock, string alergeno
                      )
 {
-        this.init (Nombre, producto, tipo, stock, alergeno);
+        this.init (Id, nombre, producto, tipo, stock, alergeno);
 }
 
 
 public IngredienteEN(IngredienteEN ingrediente)
 {
-        this.init (Nombre, ingrediente.Producto, ingrediente.Tipo, ingrediente.Stock, ingrediente.Alergeno);
+        this.init (Id, ingrediente.Nombre, ingrediente.Producto, ingrediente.Tipo, ingrediente.Stock, ingrediente.Alergeno);
 }
 
-private void init (string nombre
-                   , System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> producto, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum tipo, int stock, string alergeno)
+private void init (int id
+                   , string nombre, System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN> producto, DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum tipo, int stock, string alergeno)
 {
-        this.Nombre = nombre;
+        this.Id = id;
 
+
+        this.Nombre = nombre;
 
         this.Producto = producto;
 
@@ -116,7 +131,7 @@ public override bool Equals (object obj)
         IngredienteEN t = obj as IngredienteEN;
         if (t == null)
                 return false;
-        if (Nombre.Equals (t.Nombre))
+        if (Id.Equals (t.Id))
                 return true;
         else
                 return false;
@@ -126,7 +141,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Nombre.GetHashCode ();
+        hash += this.Id.GetHashCode ();
         return hash;
 }
 }

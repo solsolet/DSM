@@ -39,10 +39,10 @@ public IAdministradorCAD get_IAdministradorCAD ()
         return this._IAdministradorCAD;
 }
 
-public string New_ (string p_nombre, String p_pass)
+public int New_ (string p_nombre, String p_pass)
 {
         AdministradorEN administradorEN = null;
-        string oid;
+        int oid;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
@@ -56,30 +56,32 @@ public string New_ (string p_nombre, String p_pass)
         return oid;
 }
 
-public void Modify (string p_Administrador_OID)
+public void Modify (int p_Administrador_OID, string p_nombre, String p_pass)
 {
         AdministradorEN administradorEN = null;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
-        administradorEN.Nombre = p_Administrador_OID;
+        administradorEN.Id = p_Administrador_OID;
+        administradorEN.Nombre = p_nombre;
+        administradorEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
         //Call to AdministradorCAD
 
         _IAdministradorCAD.Modify (administradorEN);
 }
 
-public void Destroy (string nombre
+public void Destroy (int id
                      )
 {
-        _IAdministradorCAD.Destroy (nombre);
+        _IAdministradorCAD.Destroy (id);
 }
 
-public AdministradorEN ReadOID (string nombre
+public AdministradorEN ReadOID (int id
                                 )
 {
         AdministradorEN administradorEN = null;
 
-        administradorEN = _IAdministradorCAD.ReadOID (nombre);
+        administradorEN = _IAdministradorCAD.ReadOID (id);
         return administradorEN;
 }
 
@@ -90,13 +92,13 @@ public System.Collections.Generic.IList<AdministradorEN> ReadAll (int first, int
         list = _IAdministradorCAD.ReadAll (first, size);
         return list;
 }
-public string Login (string p_Administrador_OID, string p_pass)
+public string Login (int p_Administrador_OID, string p_pass)
 {
         string result = null;
         AdministradorEN en = _IAdministradorCAD.ReadOIDDefault (p_Administrador_OID);
 
         if (en != null && en.Pass.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
-                result = this.GetToken (en.Nombre);
+                result = this.GetToken (en.Id);
 
         return result;
 }
@@ -104,26 +106,26 @@ public string Login (string p_Administrador_OID, string p_pass)
 
 
 
-private string Encode (string nombre)
+private string Encode (string nombre, int id)
 {
         var payload = new Dictionary<string, object>(){
-                { "nombre", nombre }
+                { "nombre", nombre }, { "id", id }
         };
         string token = Jose.JWT.Encode (payload, Utils.Util.getKey (), Jose.JwsAlgorithm.HS256);
 
         return token;
 }
 
-public string GetToken (string nombre)
+public string GetToken (int id)
 {
-        AdministradorEN en = _IAdministradorCAD.ReadOIDDefault (nombre);
-        string token = Encode (en.Nombre);
+        AdministradorEN en = _IAdministradorCAD.ReadOIDDefault (id);
+        string token = Encode (en.Nombre, en.Id);
 
         return token;
 }
-public string CheckToken (string token)
+public int CheckToken (string token)
 {
-        string result = null;
+        int result = -1;
 
         try
         {
@@ -131,12 +133,12 @@ public string CheckToken (string token)
 
 
 
-                string id = (string)ObtenerNOMBRE (decodedToken);
+                int id = (int)ObtenerID (decodedToken);
 
                 AdministradorEN en = _IAdministradorCAD.ReadOIDDefault (id);
 
-                if (en != null && ((string)en.Nombre).Equals (ObtenerNOMBRE (decodedToken))
-                    ) {
+                if (en != null && ((long)en.Id).Equals (ObtenerID (decodedToken))
+                    && ((string)en.Nombre).Equals (ObtenerNOMBRE (decodedToken))) {
                         result = id;
                 }
                 else throw new ModelException ("El token es incorrecto");
@@ -156,6 +158,20 @@ public string ObtenerNOMBRE (string decodedToken)
                 Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object> >(decodedToken);
                 string nombre = (string)results ["nombre"];
                 return nombre;
+        }
+        catch
+        {
+                throw new Exception ("El token enviado no es correcto");
+        }
+}
+
+public long ObtenerID (string decodedToken)
+{
+        try
+        {
+                Dictionary<string, object> results = JsonConvert.DeserializeObject<Dictionary<string, object> >(decodedToken);
+                long id = (long)results ["id"];
+                return id;
         }
         catch
         {

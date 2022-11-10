@@ -39,7 +39,7 @@ public IPedidoCAD get_IPedidoCAD ()
         return this._IPedidoCAD;
 }
 
-public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_cliente, float p_precio, string p_usuario, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum p_estado, Nullable<DateTime> p_fecha, System.Collections.Generic.IList<int> p_notificacion)
+public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_cliente, float p_precio, int p_usuario, DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum p_estado, Nullable<DateTime> p_fecha, System.Collections.Generic.IList<int> p_notificacion)
 {
         PedidoEN pedidoEN = null;
         int oid;
@@ -55,11 +55,11 @@ public int New_ (string p_direntrega, Nullable<DateTime> p_horamaxima, string p_
         pedidoEN.Precio = p_precio;
 
 
-        if (p_usuario != null) {
+        if (p_usuario != -1) {
                 // El argumento p_usuario -> Property usuario es oid = false
                 // Lista de oids id
                 pedidoEN.Usuario = new DSMPracticaGenNHibernate.EN.DSMPractica.UsuarioEN ();
-                pedidoEN.Usuario.Email = p_usuario;
+                pedidoEN.Usuario.Id = p_usuario;
         }
 
         pedidoEN.Estado = p_estado;
@@ -126,7 +126,7 @@ public System.Collections.Generic.IList<PedidoEN> ReadAll (int first, int size)
         list = _IPedidoCAD.ReadAll (first, size);
         return list;
 }
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (DSMPracticaGenNHibernate.EN.DSMPractica.ProductoEN p_nomProducto)
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.PedidoEN> PedidoporProducto (int p_nomProducto)
 {
         return _IPedidoCAD.PedidoporProducto (p_nomProducto);
 }

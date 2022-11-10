@@ -21,7 +21,7 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String pass = passArg;
 
         // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=error; database=master; integrated security=yes");
+        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
 
         // Order T-SQL create user
         String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
@@ -78,105 +78,103 @@ public static void InitializeData ()
         try
         {
                 // Insert the initilizations of entities using the CEN classes
-                FacturaCEN facCEN = new FacturaCEN ();
-                facCEN.New_ (new DateTime (2022, 8, 8), true, false, 45, 1);
-
-                CartaCEN carCEN = new CartaCEN ();
-                carCEN.New_ (DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, "cartavegana.com", "carta.com");
-
-                //crear antes de producto ingrediente
-                IngredienteCEN ingCEN = new IngredienteCEN ();
-                string ing1 = ingCEN.New_ ("patata", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 23, null);
-                string ing2 = ingCEN.New_ ("nugget", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.general, 52, "huevo");
-                string ing3 = ingCEN.New_ ("tomate", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 17, null);
-
-                //IList<>
-                IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll (0, 2);
-                IList<String> listaIng = new List<String>();
-                foreach (IngredienteEN ing in todosIngredientes) {
-                        listaIng.Add (ing.Nombre);
-                }
-
-                ProductoCEN prodCEN = new ProductoCEN (); //da error ns como solucionarlo
-                prodCEN.New_ ("Pedro", "hamburguesa", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum.hamburguesa, 10, 3, listaIng, "hambur.jpg", true); //no tiene sentido la lista de ingredientes con la hamburguesa pero xdd
-
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idUsu = usuCEN.New_ ("pedro08@gmail.com", "c/Quintana n32", 1234567890123456789, "Pedro", "Llorca", 963453454, 75, "123123a");
+                int idUsu = usuCEN.New_ ("pedro08@gmail.com", "c/Quintana n32", 1234567890123456789, "Pedro", "Llorca", 963453454, 75, "123123a");
 
-                NotificacionCEN notCEN = new NotificacionCEN ();
+                //AdministradorCEN adminCEN = new AdministradorCEN ();
+                //adminCEN.New_ ("Pedro Ruiz", "hola1234");
 
-                int idNoti1 = notCEN.New_ ();
-                int idNoti2 = notCEN.New_ ();
-                int idNoti3 = notCEN.New_ ();
+                ////crear antes de producto ingrediente
+                //IngredienteCEN ingCEN = new IngredienteCEN ();
+                //string ing1 = ingCEN.New_ ("patata", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 23, "");
+                //string ing2 = ingCEN.New_ ("nugget", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.general, 52, "huevo");
+                //string ing3 = ingCEN.New_ ("tomate", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, 17, "");
 
-                IList<NotificacionEN> todasNotficaciones = notCEN.ReadAll (0, 2);
-                IList<int> listaNot = new List<int>();
-                foreach (NotificacionEN noti in todasNotficaciones) {
-                        listaNot.Add (noti.Id);
-                }
+                ////IList<>
+                //IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll (0, 2);
+                //IList<String> listaIng = new List<String>();
+                //foreach (IngredienteEN ing in todosIngredientes) {
+                //        listaIng.Add (ing.Nombre);
+                //}
 
-                PedidoCEN pedCEN = new PedidoCEN ();
-                int idPed = pedCEN.New_ ("c/Quintana n32", new DateTime (2022, 4, 5), "pedro08@gmail.com", 22, "pedro08@gmail.com", DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum.enviado, new DateTime (20022, 4, 5), listaNot);
+                //NotificacionCEN notCEN = new NotificacionCEN ();
 
-                ValoracionCEN valCEN = new ValoracionCEN ();
-                valCEN.New_ (3, "Muy rapidos y atentos", idUsu, idPed);
+                //int idNoti1 = notCEN.New_ ();
+                //int idNoti2 = notCEN.New_ ();
+                //int idNoti3 = notCEN.New_ ();
 
-                AdministradorCEN adminCEN = new AdministradorCEN ();
-                adminCEN.New_ ("Pedro Ruiz", "hola1234");
+                //IList<NotificacionEN> todasNotficaciones = notCEN.ReadAll (0, 2);
+                //IList<int> listaNot = new List<int>();
+                //foreach (NotificacionEN noti in todasNotficaciones) {
+                //        listaNot.Add (noti.Id);
+                //}
 
-                LinPedCEN lpCEN = new LinPedCEN ();
-                int lin1 = lpCEN.New_ ("Agua", idPed, 1, 1);
-                int lin2 = lpCEN.New_ ("Patatas deluxe", idPed, 2, 2);
-                int lin3 = lpCEN.New_ ("FMburger", idPed, 1, 5);
-
-                // p.e. CustomerCEN customer = new CustomerCEN();
-                // customer.New_ (p_user:"user", p_password:"1234");
-
-                /*
-                 *
-                 * //IList<>
-                 * IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll (0, 2);
-                 * IList<String> listaIng = new List<String>();
-                 * foreach (IngredienteEN ing in todosIngredientes) {
-                 *      listaIng.Add (ing.Nombre);
-                 * }
-                 */
-
-                //pedidoporProducto
-                ProductoCEN nomProducto1 = new ProductoCEN(); //Cambiar a EN
-                nomProducto1.New_("Pedro", "hamburguesa", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum.hamburguesa, 10, 3, listaIng, "hambur.jpg", true); //no tiene sentido la lista de ingredientes con la hamburguesa pero xdd
+                //ProductoCEN prodCEN = new ProductoCEN (); //da error ns como solucionarlo
+                //string idProd = prodCEN.New_ ("Pedro", "hamburguesa", DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoCategoriaEnum.hamburguesa, 10, 3, listaIng, "hambur.jpg", true); //no tiene sentido la lista de ingredientes con la hamburguesa pero xdd
 
 
-                IList<PedidoCEN> listaPedidos = pedCEN.PedidoporProducto (nomProducto1);
+                //PedidoCEN pedCEN = new PedidoCEN ();
+                ////int idPed = pedCEN.New_ ("c/Quintana n32", new DateTime (2022, 4, 5), "pedro08@gmail.com", 22, "pedro08@gmail.com", DSMPracticaGenNHibernate.Enumerated.DSMPractica.EstadoPedidoEnum.enviado, new DateTime (20022, 4, 5), listaNot);
 
-                Console.WriteLine ("Lista de Pedidos que tienen el producto  " + nomProducto1);
-                foreach (PedidoCEN ped in listaPedidos) {
-                        Console.WriteLine ("Pedido " + ped.Id);
-                }
+                //LinPedCEN lpCEN = new LinPedCEN ();
+                //int lin1 = lpCEN.New_ ("Agua", idPed, 1, 1);
+                //int lin2 = lpCEN.New_ ("Patatas deluxe", idPed, 2, 2);
+                //int lin3 = lpCEN.New_ ("FMburger", idPed, 1, 5);
 
-                //filtrarCarta
+                //FacturaCEN facCEN = new FacturaCEN ();
+                //facCEN.New_ (new DateTime (2022, 8, 8), true, false, 45, idPed);
 
-                IList<CartaCEN> listaCartas = carCEN.FiltrarCarta (tCarta);
-                Console.WriteLine ("Lista de Cartas que son del tipo " + tCarta);
-                foreach (CartaCEN cart in listaCartas) {
-                        Console.WriteLine ("Carta  " + cart.get_ICartaCAD ());
-                }
+                //CartaCEN carCEN = new CartaCEN ();
+                //carCEN.New_ (DSMPracticaGenNHibernate.Enumerated.DSMPractica.TipoComidaEnum.vegano, "cartavegana.com", "carta.com");
 
-                //filtrarCategoria
 
-                IList<ProductoCEN> listaProd = prodCEN.FiltrarCategoria (tCategoria);
-                Console.WriteLine ("Lista de Productos que son del tipo " + tCategoria);
-                foreach (ProductoCEN prod in listaProd) {
-                        Console.WriteLine ("Producto  " + prod.Id);
-                }
+                //ValoracionCEN valCEN = new ValoracionCEN ();
+                //valCEN.New_ (3, "Muy rapidos y atentos", idUsu, idPed);
 
-                //filtrarComida
+                //// p.e. CustomerCEN customer = new CustomerCEN();
+                //// customer.New_ (p_user:"user", p_password:"1234");
 
-                IList<IngredienteCEN> listaIng = ingCEN.FiltrarComida (tComida);
-                Console.WriteLine ("Lista de Ingredientes que son del tipo " + tComida);
-                foreach (IngredienteCEN ing in listaIng) {
-                        Console.WriteLine ("Ingrediente  " + ing.Nombre);
-                }
+                ///*
+                // *
+                // * //IList<>
+                // * IList<IngredienteEN> todosIngredientes = ingCEN.ReadAll (0, 2);
+                // * IList<String> listaIng = new List<String>();
+                // * foreach (IngredienteEN ing in todosIngredientes) {
+                // *      listaIng.Add (ing.Nombre);
+                // * }
+                // */
+
+                ////pedidoporProducto
+                //IList<PedidoEN> listaPedidos = pedCEN.PedidoporProducto (idProd);
+
+                //Console.WriteLine ("Lista de Pedidos que tienen el producto  " + idProd);
+                //foreach (PedidoEN ped in listaPedidos) {
+                //        Console.WriteLine ("Pedido " + ped.Id);
+                //}
+
+                ////filtrarCarta
+
+                //IList<CartaEN> listaCartas = carCEN.FiltrarCarta (1);
+                //Console.WriteLine ("Lista de Cartas que son del tipo " + 1);
+                //foreach (CartaEN cart in listaCartas) {
+                //        Console.WriteLine ("Carta  " + cart.Tipo);
+                //}
+
+                ////filtrarCategoria
+
+                //IList<ProductoEN> listaProd = prodCEN.FiltrarCategoria (1);
+                //Console.WriteLine ("Lista de Productos que son del tipo " + 1);
+                //foreach (ProductoEN prod in listaProd) {
+                //        Console.WriteLine ("Producto  " + prod.Nombre);
+                //}
+
+                ////filtrarComida
+
+                //IList<IngredienteEN> listaIng1 = ingCEN.FiltrarComida (2);
+                //Console.WriteLine ("Lista de Ingredientes que son del tipo " + 2);
+                //foreach (IngredienteEN ing in listaIng1) {
+                //        Console.WriteLine ("Ingrediente  " + ing.Nombre);
+                //}
 
                 /*PROTECTED REGION END*/
         }

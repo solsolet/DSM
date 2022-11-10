@@ -29,7 +29,7 @@ public IngredienteCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public IngredienteEN ReadOIDDefault (string nombre
+public IngredienteEN ReadOIDDefault (int id
                                      )
 {
         IngredienteEN ingredienteEN = null;
@@ -37,7 +37,7 @@ public IngredienteEN ReadOIDDefault (string nombre
         try
         {
                 SessionInitializeTransaction ();
-                ingredienteEN = (IngredienteEN)session.Get (typeof(IngredienteEN), nombre);
+                ingredienteEN = (IngredienteEN)session.Get (typeof(IngredienteEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,10 @@ public void ModifyDefault (IngredienteEN ingrediente)
         try
         {
                 SessionInitializeTransaction ();
-                IngredienteEN ingredienteEN = (IngredienteEN)session.Load (typeof(IngredienteEN), ingrediente.Nombre);
+                IngredienteEN ingredienteEN = (IngredienteEN)session.Load (typeof(IngredienteEN), ingrediente.Id);
+
+                ingredienteEN.Nombre = ingrediente.Nombre;
+
 
 
                 ingredienteEN.Tipo = ingrediente.Tipo;
@@ -119,7 +122,7 @@ public void ModifyDefault (IngredienteEN ingrediente)
 }
 
 
-public string New_ (IngredienteEN ingrediente)
+public int New_ (IngredienteEN ingrediente)
 {
         try
         {
@@ -142,7 +145,7 @@ public string New_ (IngredienteEN ingrediente)
                 SessionClose ();
         }
 
-        return ingrediente.Nombre;
+        return ingrediente.Id;
 }
 
 public void Modify (IngredienteEN ingrediente)
@@ -150,7 +153,10 @@ public void Modify (IngredienteEN ingrediente)
         try
         {
                 SessionInitializeTransaction ();
-                IngredienteEN ingredienteEN = (IngredienteEN)session.Load (typeof(IngredienteEN), ingrediente.Nombre);
+                IngredienteEN ingredienteEN = (IngredienteEN)session.Load (typeof(IngredienteEN), ingrediente.Id);
+
+                ingredienteEN.Nombre = ingrediente.Nombre;
+
 
                 ingredienteEN.Tipo = ingrediente.Tipo;
 
@@ -177,13 +183,13 @@ public void Modify (IngredienteEN ingrediente)
                 SessionClose ();
         }
 }
-public void Destroy (string nombre
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                IngredienteEN ingredienteEN = (IngredienteEN)session.Load (typeof(IngredienteEN), nombre);
+                IngredienteEN ingredienteEN = (IngredienteEN)session.Load (typeof(IngredienteEN), id);
                 session.Delete (ingredienteEN);
                 SessionCommit ();
         }
@@ -204,7 +210,7 @@ public void Destroy (string nombre
 
 //Sin e: ReadOID
 //Con e: IngredienteEN
-public IngredienteEN ReadOID (string nombre
+public IngredienteEN ReadOID (int id
                               )
 {
         IngredienteEN ingredienteEN = null;
@@ -212,7 +218,7 @@ public IngredienteEN ReadOID (string nombre
         try
         {
                 SessionInitializeTransaction ();
-                ingredienteEN = (IngredienteEN)session.Get (typeof(IngredienteEN), nombre);
+                ingredienteEN = (IngredienteEN)session.Get (typeof(IngredienteEN), id);
                 SessionCommit ();
         }
 
@@ -262,16 +268,16 @@ public System.Collections.Generic.IList<IngredienteEN> ReadAll (int first, int s
         return result;
 }
 
-public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> FiltrarComida (int ? p_tIng)
+public System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> FiltrarComida (int ? p_tComida)
 {
         System.Collections.Generic.IList<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM IngredienteEN self where select ing FROM IngredienteEN as ing where ing.Tipo =: p_tIng";
+                //String sql = @"FROM IngredienteEN self where select ing FROM IngredienteEN as ing where ing.Tipo =: p_tComida";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("IngredienteENfiltrarComidaHQL");
-                query.SetParameter ("p_tIng", p_tIng);
+                query.SetParameter ("p_tComida", p_tComida);
 
                 result = query.List<DSMPracticaGenNHibernate.EN.DSMPractica.IngredienteEN>();
                 SessionCommit ();
